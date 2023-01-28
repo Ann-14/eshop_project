@@ -9,7 +9,7 @@ const Header = () => {
     setNav(!nav)
   }
   return (
-    <header className='flex justify-between items-center h-24 max-w-[1240px] mx-auto px-4'>
+    <header className=' flex justify-between items-center h-24 max-w-[1240px] mx-auto px-4'>
       {/* Logo link */}
       <div>
         <Link to='/'><h2 className='w-full text-3xl font-bold text-[#00df9a] m-4'>The Colorsite</h2> </Link>
@@ -23,8 +23,9 @@ const Header = () => {
       </div>
       {/* //Right links */}
       <ul className='hidden md:flex gap-4'>
-        <Link to='/log in'>Login</Link>
-        <Link to='/registration'>Registration</Link>
+        <Link to='/login'>Login</Link>
+        <Link to='/signup'>SignUp</Link>
+        <Link to='/resetpassword'>ResetPassword</Link>
         <Link to='/cart' className='flex'>Cart<AiOutlineShoppingCart  /><p>0</p> </Link>
       </ul>
       <div onClick={handleNav} className='block md:hidden'>
@@ -37,8 +38,9 @@ const Header = () => {
         <div className='flex flex-col text-white '>
           <Link to='/'>Home</Link>
           <Link to='/contact'>Contact</Link>
-          <Link to='/log in'>Login</Link>
-          <Link to='/registration'>Registration</Link>
+          <Link to='/login'>Login</Link>
+          <Link to='/signup'>SignUp</Link>
+          <Link to='/resetpassword'>ResetPassword</Link>
           <Link to='/cart'>Cart<AiOutlineShoppingCart /><p>0</p> </Link>
         </div>
 
