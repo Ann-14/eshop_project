@@ -14,13 +14,15 @@ const Header = () => {
       <div>
         <Link to='/'><h2 className='w-full text-3xl font-bold text-[#00df9a] m-4'>The Colorsite</h2> </Link>
       </div>
+      <div>
       {/* //Middle links */}
-      <ul className='hidden md:flex'>
+      <ul className='hidden md:flex gap-4'>
         <Link to='/'>Home</Link>
         <Link to='/contact'>Contact</Link>
       </ul>
+      </div>
       {/* //Right links */}
-      <ul className='hidden md:flex '>
+      <ul className='hidden md:flex gap-4'>
         <Link to='/log in'>Login</Link>
         <Link to='/registration'>Registration</Link>
         <Link to='/cart' className='flex'>Cart<AiOutlineShoppingCart  /><p>0</p> </Link>
@@ -32,7 +34,7 @@ const Header = () => {
         <div>
           <Link to='/'><h2 className='w-full text-3xl font-bold text-[#00df9a] m-4'>The Colorsite</h2> </Link>
         </div>
-        <div className='flex flex-col '>
+        <div className='flex flex-col text-white '>
           <Link to='/'>Home</Link>
           <Link to='/contact'>Contact</Link>
           <Link to='/log in'>Login</Link>

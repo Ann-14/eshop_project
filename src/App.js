@@ -12,6 +12,7 @@ function App() {
     <>
     
 <BrowserRouter>
+<div className=' min-h-screen'>
 <Header />
     <Routes>
       <Route path='/' element={<Home/>}></Route>
@@ -20,8 +21,8 @@ function App() {
 <Footer />
 
 
+</div>
 </BrowserRouter>
-
     </> 
   );
 }
