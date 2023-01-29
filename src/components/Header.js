@@ -1,12 +1,25 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { AiOutlineClose, AiOutlineMenu, AiOutlineShoppingCart } from 'react-icons/ai'
+import { auth } from '../firebase/config'
+import { signOut } from 'firebase/auth'
+
+import { toast } from 'react-toastify'
 
 const Header = () => {
   const [nav, setNav] = useState(false)
+  const navigate = useNavigate()
 
   const handleNav = () => {
     setNav(!nav)
+  }
+  const handleLogout = () => {
+    signOut(auth).then(() => {
+      toast.success('Logout successful')
+      navigate('/')
+    }).catch((error) => {
+      toast.error(error.message)
+    });
   }
   return (
     <header className=' flex justify-between items-center h-24 max-w-[1240px] mx-auto px-4'>
@@ -15,18 +28,19 @@ const Header = () => {
         <Link to='/'><h2 className='w-full text-3xl font-bold text-[#00df9a] m-4'>The Colorsite</h2> </Link>
       </div>
       <div>
-      {/* //Middle links */}
-      <ul className='hidden md:flex gap-4'>
-        <Link to='/'>Home</Link>
-        <Link to='/contact'>Contact</Link>
-      </ul>
+        {/* //Middle links */}
+        <ul className='hidden md:flex gap-4'>
+          <Link to='/'>Home</Link>
+          <Link to='/contact'>Contact</Link>
+        </ul>
       </div>
       {/* //Right links */}
       <ul className='hidden md:flex gap-4'>
         <Link to='/login'>Login</Link>
-        <Link to='/signup'>SignUp</Link>
+        <Link to='/signup'>Sign up</Link>
+        <Link to='/' onClick={handleLogout}>Logout </Link>
         <Link to='/resetpassword'>ResetPassword</Link>
-        <Link to='/cart' className='flex'>Cart<AiOutlineShoppingCart  /><p>0</p> </Link>
+        <Link to='/cart' className='flex'>Cart<AiOutlineShoppingCart /><p>0</p> </Link>
       </ul>
       <div onClick={handleNav} className='block md:hidden'>
         {nav ? <AiOutlineClose size={20} /> : <AiOutlineMenu size={20} />}
@@ -39,11 +53,11 @@ const Header = () => {
           <Link to='/'>Home</Link>
           <Link to='/contact'>Contact</Link>
           <Link to='/login'>Login</Link>
-          <Link to='/signup'>SignUp</Link>
+          <Link to='/signup'>Sign up</Link>
+          <Link to='/' onClick={handleLogout}>Logout </Link>
           <Link to='/resetpassword'>ResetPassword</Link>
           <Link to='/cart'>Cart<AiOutlineShoppingCart /><p>0</p> </Link>
         </div>
-
       </ul>
     </header>
   )
