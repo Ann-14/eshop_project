@@ -1,15 +1,32 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { AiOutlineClose, AiOutlineMenu, AiOutlineShoppingCart } from 'react-icons/ai'
+import { AiOutlineClose, AiOutlineMenu, AiOutlineShoppingCart,AiOutlineUser } from 'react-icons/ai'
 import { auth } from '../firebase/config'
-import { signOut } from 'firebase/auth'
+import { onAuthStateChanged, signOut } from 'firebase/auth'
 
 import { toast } from 'react-toastify'
 
 const Header = () => {
   const [nav, setNav] = useState(false)
+  const [userName, setUserName] = useState('')
   const navigate = useNavigate()
-
+//monitor user state
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // User is signed in
+        const uid = user.uid;
+        console.log(uid)
+        setUserName(user.email)
+      } else {
+        // User is signed out
+   setUserName('')
+      }
+    });
+  
+  
+  }, [])
+  
   const handleNav = () => {
     setNav(!nav)
   }
@@ -21,6 +38,7 @@ const Header = () => {
       toast.error(error.message)
     });
   }
+
   return (
     <header className=' flex justify-between items-center h-24 max-w-[1240px] mx-auto px-4'>
       {/* Logo link */}
@@ -37,6 +55,8 @@ const Header = () => {
       {/* //Right links */}
       <ul className='hidden md:flex gap-4'>
         <Link to='/login'>Login</Link>
+        {/* //TODO profile page */}
+        <button><AiOutlineUser />Hi,{userName}</button>
         <Link to='/signup'>Sign up</Link>
         <Link to='/' onClick={handleLogout}>Logout </Link>
         <Link to='/resetpassword'>ResetPassword</Link>
@@ -53,6 +73,7 @@ const Header = () => {
           <Link to='/'>Home</Link>
           <Link to='/contact'>Contact</Link>
           <Link to='/login'>Login</Link>
+          <button><AiOutlineUser>Hi,{userName}</AiOutlineUser></button>
           <Link to='/signup'>Sign up</Link>
           <Link to='/' onClick={handleLogout}>Logout </Link>
           <Link to='/resetpassword'>ResetPassword</Link>

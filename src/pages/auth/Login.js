@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 
 import { Link, useNavigate } from 'react-router-dom'
 import { auth } from '../../firebase/config'
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Loader } from '../../components/Loader';
@@ -12,7 +12,7 @@ export const Login = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
-  // const { signIn } = useAuth()
+  
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
@@ -24,7 +24,7 @@ export const Login = () => {
       const user = userCredential.user;
       console.log(user)
       setLoading(false)
-      toast.success('Log in successful...')
+      toast.success('Login successful')
       navigate('/')
     })
     .catch((error) => {
@@ -33,6 +33,20 @@ export const Login = () => {
     });
     setLoading(false)
   }
+//Login with Google
+const provider = new GoogleAuthProvider();
+ const loginWithGoogle = () =>{
+  signInWithPopup(auth, provider)
+  .then((result) => {
+    const user = result.user;
+    console.log(user)
+   toast.success('Login successful')
+   navigate('/')
+  }).catch((error) => {
+    toast.error(error.message)
+  });
+ }
+
   return (
     <>
     {loading && <Loader/>}
@@ -44,7 +58,7 @@ export const Login = () => {
             <h1 className="text-4xl font-medium">Login</h1>
             <p className="text-slate-200 mt-2">Hi, Welcome back 👋</p>
             <div className="my-5">
-              <button className="w-full text-center py-3 my-3 border flex space-x-2 items-center justify-center border-slate-200 rounded-lg  text-slate-200 hover:border-yellow-500 hover:shadow transition duration-150">
+              <button className="w-full text-center py-3 my-3 border flex space-x-2 items-center justify-center border-slate-200 rounded-lg  text-slate-200 hover:border-yellow-500 hover:shadow transition duration-150" onClick={loginWithGoogle}>
                 <img src="https://www.svgrepo.com/show/355037/google.svg" className="w-6 h-6 text-slate-200" alt="" /> <span>Login with Google</span>
               </button>
             </div>
