@@ -30,9 +30,10 @@ const authSlice = createSlice({
 
 export const { setActiveUser,removeActiveUser } = authSlice.actions
 
-// or const {isLoggedIn} = useSelector((store) => store["auth"])
+
 export const selectIsLoggedIn = (state) => state.auth.isLoggedIn
 export const selectEmail = (state) => state.auth.email
-export const selectUserName = (state) => state.auth.userID
+export const selectUserName = (state) => state.auth.userName
+export const selectUserID = (state) => state.auth.selectUserID
 
 export default authSlice.reducer
