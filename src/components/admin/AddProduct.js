@@ -1,4 +1,7 @@
+import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
 import React, { useState } from 'react'
+import { toast } from 'react-toastify';
+import { storage } from '../../firebase/config';
 
 const categories = [
  { id:1,
@@ -15,19 +18,41 @@ export const AddProduct = () => {
   const [product, setProduct] = useState({
     name:'',
     imageURL:'',
-    price:'',
+    price:0,
     description:'',
     category:'',
     
   });
+  const [uploadProgress, setUploadProgress] = useState(0)
 
 const handleInputChange = (e) =>{
   const {name,value} = e.target
   setProduct({...product, [name]: value})
-  
 }
-const handleImgChange = (e) =>{
 
+const handleImgChange = (e) =>{
+  //we save the img we want to upload to a variable and refer to it with firebase's 'ref'
+  const file = e.target.files[0];
+
+  const storageRef = ref(storage, `theColorSite/${Date.now()}${file.name}`);
+  const uploadTask = uploadBytesResumable(storageRef, file);
+
+  uploadTask.on(
+    "state_changed",
+    (snapshot) => {
+      const progress =
+        (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+    },
+    (error) => {
+      toast.error(error.message);
+    },
+    () => {
+      getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+        setProduct({ ...product, imageURL: downloadURL });
+        toast.success("Image uploaded successfully.");
+      });
+    }
+  );
 }
 const addProduct = (e) =>{
   e.preventDefault()
@@ -75,17 +100,19 @@ const addProduct = (e) =>{
                             strokeLinejoin="round"
                           />
                         </svg>
-                        <div className="flex text-sm text-gray-600">
+                        <div className="flex flex-col text-sm text-gray-600">
                           <label
-                            htmlFor="file"
-                            className="relative cursor-pointer rounded-md bg-white font-medium text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:text-indigo-500"
+                            htmlFor="image"
                           >
-                            <span>Upload a file</span>
-                            <input type="file" accept='image/*' name="image"  className="sr-only" onChange={(e) => handleImgChange(e)}/>
-                          </label>
-                          <p className="pl-1">or drag and drop</p>
+                            <span>Upload a file</span></label>
+                            <input type="file"
+                accept="image/*"
+                placeholder="Product Image"
+                className="" 
+                name="image"
+                onChange={(e) => handleImgChange(e)} />
+                          
                         </div>
-                        <p className="text-xs text-gray-500">PNG, JPG, GIF up to 10MB</p>
                       </div>
                     </div>
                       <input type='text'  name='imageURL' value={product.imageURL} disabled placeholder='Image url'/> 
