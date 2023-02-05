@@ -6,18 +6,21 @@ import { db, storage } from "../../firebase/config"
 import {FaEdit, FaTrashAlt} from 'react-icons/fa'
 import { deleteObject, ref } from "firebase/storage"
 import  { Confirm } from "notiflix"
+import { useDispatch } from "react-redux"
+import { storeProducts } from "../../redux/slice/productSlice"
+
 
 export const ViewProducts = () => {
   const [products, setProducts] = useState([])
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
+  const dispatch = useDispatch()
 useEffect(() => {
   getProducts()
 }, []);
 
   const getProducts = () => {
     setLoading(true)
-
     try {
       const productsRef = collection(db, "products");
       const q = query(productsRef, orderBy("createdAt", "desc"));
@@ -26,9 +29,15 @@ useEffect(() => {
           id:doc.id,
           ...doc.data()
         }))
-        console.log(allProducts)
         setProducts(allProducts)
         setLoading(false)
+        dispatch(
+          storeProducts({
+            products: allProducts
+          })
+          )
+
+
       });
 
     } catch (error) {

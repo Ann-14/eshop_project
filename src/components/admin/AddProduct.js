@@ -82,7 +82,7 @@ const navigate = useNavigate()
         price: Number(product.price),
         description: product.description,
         category: product.category,
-        createdAt: Timestamp.now().toDate()
+        createdAt: JSON.stringify(Timestamp.now()),
       });
       setLoading(false)
       setUploadProgress(0)
