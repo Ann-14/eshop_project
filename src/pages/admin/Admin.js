@@ -17,7 +17,7 @@ export const Admin = () => {
         <Routes>
           <Route path='homeAdmin' element={<HomeAdmin />}/>
           <Route path='products' element={<ViewProducts></ViewProducts>}/>
-          <Route path='add-product' element={<AddProduct/>}/>
+          <Route path='add-product/:id' element={<AddProduct/>}/>
           <Route path='orders' element={< Orders/>}/>
 
           

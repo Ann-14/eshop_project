@@ -15,6 +15,7 @@ export const ViewProducts = () => {
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
   const dispatch = useDispatch()
+  
 useEffect(() => {
   getProducts()
 }, []);
@@ -31,14 +32,14 @@ useEffect(() => {
         }))
         setProducts(allProducts)
         setLoading(false)
+        //we pass the (allProducts) to redux with 
         dispatch(
           storeProducts({
             products: allProducts
-          })
+          }),
           )
-
-
-      });
+  
+        });
 
     } catch (error) {
       setLoading(false)
@@ -98,7 +99,6 @@ const deleteProduct = async(id, imageURL) =>{
 				<tbody>
           {products.map((product,index)=> {
             const {id,name,price,imageURL,category} = product
-            console.log(product)
             return(
 
               <tr className="bg-gray-800" key={id}>
@@ -121,7 +121,7 @@ const deleteProduct = async(id, imageURL) =>{
 							<span className="bg-green-400 text-gray-50 rounded-md px-2">available</span>
 						</td>
 						<td className="p-3 ">
-							<Link to='/admin/product' className="text-gray-400 hover:text-gray-100 mr-2"><FaEdit /></Link>
+							<Link to={`/admin/add-product/${id}`}className="text-gray-400 hover:text-gray-100 mr-2"><FaEdit /></Link>
 							<Link to='/admin/product' className="text-gray-400 hover:text-gray-100 mr-2"><FaTrashAlt onClick={() => confirmDelete(id, imageURL)}/></Link>
 						</td>
 					</tr>

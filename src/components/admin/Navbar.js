@@ -24,7 +24,7 @@ export const Navbar = () => {
     </Link>
   </li>
   <li>
-    <Link to='/admin/add-product'>
+    <Link to='/admin/add-product/ADD'>
       Add Products
     </Link>
   </li>

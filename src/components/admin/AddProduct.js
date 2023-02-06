@@ -1,49 +1,74 @@
-import { addDoc, collection, Timestamp } from 'firebase/firestore';
-import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
-import { db, storage } from '../../firebase/config';
-import { Loader } from '../Loader';
+import { addDoc, collection, Timestamp } from "firebase/firestore";
+import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
+import { toast } from "react-toastify";
+import { db, storage } from "../../firebase/config";
+import { selectProduct } from "../../redux/slice/productSlice";
+import { Loader } from "../Loader";
 
 const categories = [
   {
     id: 1,
-    name: 'category1'
+    name: "category1",
   },
   {
     id: 2,
-    name: 'category2'
+    name: "category2",
   },
   {
     id: 3,
-    name: 'category3'
+    name: "category3",
   },
   {
     id: 4,
-    name: 'category4'
-  }
-]
+    name: "category4",
+  },
+];
 
 const initialState = {
-  name: '',
-  imageURL: '',
+  name: "",
+  imageURL: "",
   price: 0,
-  description: '',
-  category: '',
-}
+  description: "",
+  category: "",
+};
 export const AddProduct = () => {
-  const [product, setProduct] = useState({
-    ...initialState
+  const [uploadProgress, setUploadProgress] = useState(0);
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+  const { id } = useParams();
+  const productsFromRedux = useSelector(selectProduct)
+  
+  const productToEdit = productsFromRedux.find((product) => product.id === id)
+  console.log(productToEdit)
+
+  const [product, setProduct] = useState(() => {
+    const newState = detectForm(id,
+      {...initialState},
+      productToEdit
+      )
+      return newState
   });
-  const [uploadProgress, setUploadProgress] = useState(0)
-  const [loading, setLoading] = useState(false)
-const navigate = useNavigate()
+
+
+ 
+
+function detectForm  (id, f1, f2){
+if(id === 'ADD'){
+  return f1
+}else{
+  return f2
+}
+}
+
+
 
   const handleInputChange = (e) => {
-    const { name, value } = e.target
-    setProduct({ ...product, [name]: value })
-  }
+    const { name, value } = e.target;
+    setProduct({ ...product, [name]: value });
+  };
 
   const handleImgChange = (e) => {
     //we save the img we want to upload to a variable and refer to it with firebase's 'ref'
@@ -57,7 +82,7 @@ const navigate = useNavigate()
       (snapshot) => {
         const progress =
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-        setUploadProgress(progress)
+        setUploadProgress(progress);
       },
       (error) => {
         toast.error(error.message);
@@ -69,11 +94,11 @@ const navigate = useNavigate()
         });
       }
     );
-  }
+  };
 
   const addProduct = (e) => {
-    e.preventDefault()
-    setLoading(true)
+    e.preventDefault();
+    setLoading(true);
     try {
       // Add a new document with a generated id.
       const docRef = addDoc(collection(db, "products"), {
@@ -84,11 +109,21 @@ const navigate = useNavigate()
         category: product.category,
         createdAt: JSON.stringify(Timestamp.now()),
       });
-      setLoading(false)
-      setUploadProgress(0)
-      setProduct({...initialState})
-      toast.success('Product uploaded successfully')
-      navigate('/admin/products')
+      setLoading(false);
+      setUploadProgress(0);
+      setProduct({ ...initialState });
+      toast.success("Product uploaded successfully");
+      navigate("/admin/products");
+    } catch (error) {
+      setLoading(false);
+      toast.error(error.message);
+    }
+  };
+
+  const editProduct = (e) =>{
+    e.preventDefault()
+    try {
+      
     } catch (error) {
       setLoading(false)
       toast.error(error.message)
@@ -96,15 +131,19 @@ const navigate = useNavigate()
   }
   return (
     <>
-    {loading && <Loader/>} 
+      {loading && <Loader />}
       <div className="space-y-6 bg-black px-4 py-5 sm:p-6">
+        <h2 className="text-white">{detectForm(id,'Add New Product', 'Edit product')}</h2>
         <div className="md:grid md:grid-cols-3 md:gap-6">
-          <form onSubmit={addProduct}>
+          <form onSubmit={detectForm(id,addProduct,editProduct)}>
             <div className="shadow sm:overflow-hidden sm:rounded-md">
               <div className="space-y-6 bg-white px-4 py-5 sm:p-6">
                 {/* Product Name */}
                 <div className="col-span-3 sm:col-span-2">
-                  <label htmlFor="productName" className="block text-sm font-medium text-gray-700">
+                  <label
+                    htmlFor="productName"
+                    className="block text-sm font-medium text-gray-700"
+                  >
                     Product Name:
                   </label>
                   <div className="mt-1 flex rounded-md shadow-sm">
@@ -120,9 +159,10 @@ const navigate = useNavigate()
                 </div>
                 {/* Image Input */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700">Product image</label>
+                  <label className="block text-sm font-medium text-gray-700">
+                    Product image
+                  </label>
                   <div className="mt-1 flex flex-col justify-center rounded-md border-2 border-dashed border-gray-300 px-6 pt-5 pb-6">
-
                     <div className="space-y-1 text-center">
                       <svg
                         className="mx-auto h-12 w-12 text-gray-400"
@@ -139,30 +179,45 @@ const navigate = useNavigate()
                         />
                       </svg>
                       <div className="flex flex-col text-sm text-gray-600">
-                        <label
-                          htmlFor="image"
-                        >
-                          <span>Upload a file</span></label>
-                        <input type="file"
+                        <label htmlFor="image">
+                          <span>Upload a file</span>
+                        </label>
+                        <input
+                          type="file"
                           accept="image/*"
                           placeholder="Product Image"
                           className=""
                           name="image"
-                          onChange={(e) => handleImgChange(e)} />
+                          onChange={(e) => handleImgChange(e)}
+                        />
                         {uploadProgress === 0 ? null : (
-                          <div className={`bg-blue-600 mt-2 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-l-full w-[${uploadProgress}%]`}>{uploadProgress < 100 ? `Uploading ${uploadProgress}` : `Upload Complete ${uploadProgress}%`}</div>
-
+                          <div
+                            className={`bg-blue-600 mt-2 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-l-full w-[${uploadProgress}%]`}
+                          >
+                            {uploadProgress < 100
+                              ? `Uploading ${uploadProgress}`
+                              : `Upload Complete ${uploadProgress}%`}
+                          </div>
                         )}
                       </div>
                     </div>
                   </div>
-                  {product.imageURL === '' ? null : (
-                    <input type='text' name='imageURL' value={product.imageURL} disabled placeholder='Image url' />
+                  {product.imageURL === "" ? null : (
+                    <input
+                      type="text"
+                      name="imageURL"
+                      value={product.imageURL}
+                      disabled
+                      placeholder="Image url"
+                    />
                   )}
                 </div>
                 {/* Product Price */}
                 <div className="col-span-3 sm:col-span-2">
-                  <label htmlFor="price" className="block text-sm font-medium text-gray-700">
+                  <label
+                    htmlFor="price"
+                    className="block text-sm font-medium text-gray-700"
+                  >
                     Product Price:
                   </label>
                   <div className="mt-1 flex rounded-md shadow-sm">
@@ -178,33 +233,48 @@ const navigate = useNavigate()
                 </div>
                 {/* Product categories */}
                 <div className="col-span-3 sm:col-span-2">
-                  <label htmlFor="category" className="block text-sm font-medium text-gray-700">
+                  <label
+                    htmlFor="category"
+                    className="block text-sm font-medium text-gray-700"
+                  >
                     Product Categories:
                   </label>
-                  <select required name='category' value={product.category} onChange={(e) => handleInputChange(e)} className='text-sm font-medium text-gray-700'>
-                    <option value='' disabled>
+                  <select
+                    required
+                    name="category"
+                    value={product.category}
+                    onChange={(e) => handleInputChange(e)}
+                    className="text-sm font-medium text-gray-700"
+                  >
+                    <option value="" disabled>
                       --choose product category--
                     </option>
                     {categories.map((category) => {
                       return (
-                        <option key={category.id} value={category.name} className='text-sm font-medium text-gray-700'>
+                        <option
+                          key={category.id}
+                          value={category.name}
+                          className="text-sm font-medium text-gray-700"
+                        >
                           {category.name}
                         </option>
-                      )
-                    })
-                    }
+                      );
+                    })}
                   </select>
                 </div>
                 {/* Product description */}
                 <div>
-                  <label htmlFor="description" className="block text-sm font-medium text-gray-700">
+                  <label
+                    htmlFor="description"
+                    className="block text-sm font-medium text-gray-700"
+                  >
                     Product description
                   </label>
                   <div className="mt-1">
                     <textarea
                       name="description"
-                      rows='5'
-                      cols='10'
+                      rows="5"
+                      cols="10"
                       required
                       onChange={(e) => handleInputChange(e)}
                       value={product.description}
@@ -223,7 +293,7 @@ const navigate = useNavigate()
                   type="submit"
                   className="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                 >
-                  Save
+                  {detectForm(id, 'Add Product', 'Edit product')}
                 </button>
               </div>
             </div>
@@ -231,6 +301,5 @@ const navigate = useNavigate()
         </div>
       </div>
     </>
-
-  )
-}
+  );
+};
