@@ -1,5 +1,5 @@
-import { addDoc, collection, Timestamp } from "firebase/firestore";
-import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
+import { addDoc, collection, doc, setDoc, Timestamp } from "firebase/firestore";
+import { deleteObject, getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
@@ -122,8 +122,26 @@ if(id === 'ADD'){
 
   const editProduct = (e) =>{
     e.preventDefault()
+    setLoading(true)
+    //we need to delete the old img from firestore if we change it when editing
+if(product.imageURL !== productToEdit.imageURL){
+  const storageRef = ref(storage, productToEdit.imageURL)
+   deleteObject(storageRef)
+}
+
     try {
-      
+       setDoc(doc(db, "products", id), {
+        name: product.name,
+        imageURL: product.imageURL,
+        price: Number(product.price),
+        description: product.description,
+        category: product.category,
+        createdAt: productToEdit.createdAt,
+        editedAt:Timestamp.now().toDate()
+      });
+      setLoading(false)
+      toast.success('Product edited successfully')
+      navigate('/admin/products')
     } catch (error) {
       setLoading(false)
       toast.error(error.message)
