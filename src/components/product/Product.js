@@ -2,6 +2,7 @@ import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useFetchCollection } from "../../hooks/useFetchCollection"
 import { selectProduct, storeProducts } from "../../redux/slice/productSlice"
+import { Loader } from "../Loader"
 import { ProductFilter } from "./ProductFilter"
 import { ProductList } from "./ProductList"
 
@@ -25,10 +26,13 @@ export const Product = () => {
     <section>
       <div>
 <aside>
-  <ProductFilter/>
+  {loading ? null :  <ProductFilter/> }
+ 
 </aside>
 <div>
-  <ProductList products={products}/>
+  {loading ? <Loader/> : (
+    <ProductList products={products}/>
+  )}
 </div>
 
       </div>
