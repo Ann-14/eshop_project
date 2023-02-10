@@ -1,21 +1,35 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { FILTER_BY_CATEGORY } from "../../redux/slice/filterSlice"
-import { selectProducts } from "../../redux/slice/productSlice"
+import { FILTER_BY_CATEGORY, FILTER_BY_PRICE } from "../../redux/slice/filterSlice"
+import { selectMaxPrice, selectMinPrice, selectProducts } from "../../redux/slice/productSlice"
 
 
 export const ProductFilter = () => {
-const products = useSelector(selectProducts)
-const [category, setCategory] = useState('All')
-const dispatch = useDispatch()
+  const [category, setCategory] = useState('All')
+  const [price, setPrice] = useState(3000)
+  const dispatch = useDispatch()
+  const products = useSelector(selectProducts)
+const minPrice = useSelector(selectMinPrice)
+const maxPrice = useSelector(selectMaxPrice)
+
 const allCategories = [
   "All",
   ...new Set(products.map((product) => product.category))
 ]
-const filterProducts = (cat) =>{
+
+const filterProducts = (cat) => {
 setCategory(cat)
-dispatch(FILTER_BY_CATEGORY({products, category:cat}))
+dispatch(FILTER_BY_CATEGORY({
+  products, category:cat}))
 }
+
+useEffect(() => {
+dispatch(FILTER_BY_PRICE({
+products, price
+}))
+  
+}, [products,price,dispatch])
+
   return (
     <>
       <aside className="flex flex-col">
@@ -29,9 +43,9 @@ dispatch(FILTER_BY_CATEGORY({products, category:cat}))
           
         </div>
         <h3>Price</h3>
-        <p>1500</p>
+        <p>{`${price}`}</p>
         <div>
-          <input type='range' name='price' min='100' max='1000' />
+          <input type='range' value={price} onChange={(e) => setPrice(e.target.value)} min={minPrice} max={maxPrice} />
         </div>
         <br />
         <button>Clear Filter</button>

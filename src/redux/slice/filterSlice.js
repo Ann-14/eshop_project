@@ -46,6 +46,7 @@ const filterSlice = createSlice({
 
             state.filteredProducts = tempProducts
         },
+       
         FILTER_BY_CATEGORY(state,action){
             const {products,category} = action.payload
             
@@ -59,9 +60,19 @@ const filterSlice = createSlice({
             }
             state.filteredProducts = tempProducts
         },
+
+        FILTER_BY_PRICE(state,action){
+            const {products,price} = action.payload
+            const productsCopy = [...products]
+            let tempProducts = productsCopy.filter((product) => product.price <= price)
+
+            state.filteredProducts = tempProducts
+            
+        }
+
     }
 });
 
-export const { FILTER_BY_SEARCH, SORT_PRODUCTS,  FILTER_BY_CATEGORY} = filterSlice.actions
+export const { FILTER_BY_SEARCH, SORT_PRODUCTS,  FILTER_BY_CATEGORY, FILTER_BY_PRICE} = filterSlice.actions
 export const selectFilteredProducts = (state) => state.filter.filteredProducts
 export default filterSlice.reducer
