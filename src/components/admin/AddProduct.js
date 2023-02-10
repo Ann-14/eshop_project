@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { db, storage } from "../../firebase/config";
-import { selectProduct } from "../../redux/slice/productSlice";
+import { selectProducts } from "../../redux/slice/productSlice";
 import { Loader } from "../Loader";
 
 const categories = [
@@ -39,7 +39,7 @@ export const AddProduct = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { id } = useParams();
-  const productsFromRedux = useSelector(selectProduct)
+  const productsFromRedux = useSelector(selectProducts)
   
   const productToEdit = productsFromRedux.find((product) => product.id === id)
   console.log(productToEdit)

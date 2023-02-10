@@ -1,20 +1,28 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { filterBySearch, selectFilteredProducts } from "../../redux/slice/filterSlice"
+import { FILTER_BY_SEARCH, selectFilteredProducts, SORT_PRODUCTS } from "../../redux/slice/filterSlice"
 import { Search } from "../Search"
 import { ProductItem } from "./ProductItem"
 
 export const ProductList = ({ products }) => {
   const [search, setSearch] = useState('')
+  const [sort, setSort] = useState('Latest')
+
   const dispatch = useDispatch()
   const filteredProducts = useSelector(selectFilteredProducts)
   
-
   useEffect(() => {
-    dispatch(filterBySearch({
+    dispatch(FILTER_BY_SEARCH({
       products, search
     }))
   }, [search,products,dispatch])
+ 
+  useEffect(() => {
+    dispatch(SORT_PRODUCTS({
+      products, sort
+    }))
+  }, [sort,products,dispatch])
+
   
   return (
     <>
@@ -30,7 +38,7 @@ export const ProductList = ({ products }) => {
         {/* Sort Products */}
         <div>
           <label>Sort by:</label>
-          <select>
+          <select value={sort} onChange={(e) => setSort(e.target.value)}>
             <option value='latest'>Latest</option>
             <option value='lowest-price'>Lowest price</option>
             <option value='highest-price'>Highest Price</option>

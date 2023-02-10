@@ -7,21 +7,21 @@ import { FaEdit, FaTrashAlt } from 'react-icons/fa'
 import { deleteObject, ref } from "firebase/storage"
 import { Confirm } from "notiflix"
 import { useDispatch, useSelector } from "react-redux"
-import { selectProduct, storeProducts } from "../../redux/slice/productSlice"
+import { selectProducts, STORE_PRODUCTS } from "../../redux/slice/productSlice"
 import { useFetchCollection } from "../../hooks/useFetchCollection"
 import { Loader } from "../Loader"
 
 
 export const ViewProducts = () => {
   const { data, loading } = useFetchCollection('products')
-  const products = useSelector(selectProduct)
+  const products = useSelector(selectProducts)
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
   //we pass data coming from customHook to redux
   useEffect(() => {
     dispatch(
-      storeProducts({
+      STORE_PRODUCTS({
         products: data
       }),
     )

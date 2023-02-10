@@ -1,14 +1,14 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useFetchCollection } from "../../hooks/useFetchCollection"
-import { selectProduct, storeProducts } from "../../redux/slice/productSlice"
+import { selectProducts, STORE_PRODUCTS } from "../../redux/slice/productSlice"
 import { Loader } from "../Loader"
 import { ProductFilter } from "./ProductFilter"
 import { ProductList } from "./ProductList"
 
 export const Product = () => {
   const { data, loading } = useFetchCollection('products')
-  const products = useSelector(selectProduct)
+  const products = useSelector(selectProducts)
 
 
   const dispatch = useDispatch()
@@ -16,7 +16,7 @@ export const Product = () => {
   //we pass data coming from customHook to redux
   useEffect(() => {
     dispatch(
-      storeProducts({
+      STORE_PRODUCTS({
         products: data
       }),
     )
