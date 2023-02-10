@@ -30,6 +30,12 @@ products, price
   
 }, [products,price,dispatch])
 
+const clearFilters = () => {
+  setCategory('All')
+  setPrice(maxPrice)
+
+}
+
   return (
     <>
       <aside className="flex flex-col">
@@ -48,7 +54,7 @@ products, price
           <input type='range' value={price} onChange={(e) => setPrice(e.target.value)} min={minPrice} max={maxPrice} />
         </div>
         <br />
-        <button>Clear Filter</button>
+        <button onClick={clearFilters} >Clear Filters</button>
       </aside>
     </>
   )
