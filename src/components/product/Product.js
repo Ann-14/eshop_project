@@ -9,8 +9,8 @@ import { ProductList } from "./ProductList"
 export const Product = () => {
   const { data, loading } = useFetchCollection('products')
   const products = useSelector(selectProduct)
-  
-  
+
+
   const dispatch = useDispatch()
 
   //we pass data coming from customHook to redux
@@ -20,22 +20,21 @@ export const Product = () => {
         products: data
       }),
     )
-  }, [dispatch,data])
+  }, [dispatch, data])
 
   return (
-    <section>
-      <div>
-<aside>
-  {loading ? null :  <ProductFilter/> }
- 
-</aside>
-<div>
-  {loading ? <Loader/> : (
-    <ProductList products={products}/>
-  )}
-</div>
+    <main className="min-h-screen flex">
+     
+        <aside className="w-56 flex-none">
+          {loading ? null : <ProductFilter />}
+        </aside>
+        <div>
+          {loading ? <Loader /> : (
+            <ProductList products={products} />
+          )}
+        </div>
 
-      </div>
-    </section>
+      
+    </main>
   )
 }
