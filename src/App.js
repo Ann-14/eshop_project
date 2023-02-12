@@ -10,6 +10,7 @@ import { Header, Footer, ResetPassword, AdminRoute,ProductDetails } from './comp
 
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Cart } from './pages/Cart';
 
 
 
@@ -27,6 +28,7 @@ function App() {
             <Route path='/contact' element={<Contact />}></Route>
             <Route path='/login' element={<Login />}></Route>
             <Route path='/product-details/:id' element={<ProductDetails />}></Route>
+            <Route path='/cart' element={<Cart />}></Route>
             {/* ---- Auth Pages --- */}
             <Route path='/signup' element={<SignUp />}></Route>
             <Route path='/resetpassword' element={<ResetPassword />}></Route>
