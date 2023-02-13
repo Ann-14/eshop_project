@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { ADD_TO_CART, CALCULATE_TOTAL, DECREASE_CART, REMOVE_FROM_CART, selectCartItems, selectCartTotalPrice, selectCartTotalQuantity } from '../redux/slice/cartSlice'
+import { ADD_TO_CART, CALCULATE_TOTAL, CALCULATE_TOTAL_ITEMS, DECREASE_CART, REMOVE_FROM_CART, selectCartItems, selectCartTotalPrice, selectCartTotalQuantity } from '../redux/slice/cartSlice'
 import {FaTrashAlt} from 'react-icons/fa'
 import { useEffect } from 'react'
 
@@ -27,6 +27,7 @@ const removeProduct = (product) =>{
 
 useEffect(() => {
  dispatch(CALCULATE_TOTAL()) 
+ dispatch(CALCULATE_TOTAL_ITEMS())
 
 }, [dispatch,cartItems])
 
