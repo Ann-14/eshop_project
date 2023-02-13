@@ -48,11 +48,23 @@ const cartSlice = createSlice({
             state.cartItems = updatedCart
             toast.success(`${action.payload.name} removed from cart`,{position:'top-left'})
             localStorage.setItem('cartItems',JSON.stringify(state.cartItems))
+        },
+        CALCULATE_TOTAL(state,action){
+            const arr = []
+            state.cartItems.map((product) => {
+                const {price, cartQuantity} = product
+                const singleProductTotal = price * cartQuantity
+                return arr.push(singleProductTotal)
+            })
+            const totalPrice = arr.reduce((acc,curr) => {
+                return acc + curr
+            },0)
+            state.cartTotalPrice = totalPrice
         }
     }
 });
 
-export const { ADD_TO_CART,DECREASE_CART,REMOVE_FROM_CART } = cartSlice.actions
+export const { ADD_TO_CART,DECREASE_CART,REMOVE_FROM_CART, CALCULATE_TOTAL } = cartSlice.actions
 export const selectCartItems = (state) => state.cart.cartItems
 export const selectCartTotalQuantity = (state) => state.cart.selectCartTotalQuantity
 export const selectCartTotalPrice = (state) => state.cart.cartTotalPrice

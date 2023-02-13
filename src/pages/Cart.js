@@ -1,8 +1,9 @@
-import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { ADD_TO_CART, DECREASE_CART, REMOVE_FROM_CART, selectCartItems, selectCartTotalPrice, selectCartTotalQuantity } from '../redux/slice/cartSlice'
+import { ADD_TO_CART, CALCULATE_TOTAL, DECREASE_CART, REMOVE_FROM_CART, selectCartItems, selectCartTotalPrice, selectCartTotalQuantity } from '../redux/slice/cartSlice'
 import {FaTrashAlt} from 'react-icons/fa'
+import { useEffect } from 'react'
+
 
 
 
@@ -11,9 +12,11 @@ const cartItems = useSelector(selectCartItems)
 const cartTotalQuantity = useSelector(selectCartTotalQuantity)
 const cartTotalPrice = useSelector(selectCartTotalPrice)
 const dispatch = useDispatch()
+
 const increaseCart = (product) =>{
   dispatch(ADD_TO_CART(product))
 }
+
 const decreaseCart = (product) =>{
 dispatch(DECREASE_CART(product))
 }
@@ -22,6 +25,10 @@ const removeProduct = (product) =>{
   dispatch(REMOVE_FROM_CART(product))
 }
 
+useEffect(() => {
+ dispatch(CALCULATE_TOTAL()) 
+
+}, [dispatch,cartItems])
 
   return (
    <section>
