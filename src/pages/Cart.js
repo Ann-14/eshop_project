@@ -1,13 +1,27 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { selectCartItems, selectCartTotalPrice, selectCartTotalQuantity } from '../redux/slice/cartSlice'
+import { ADD_TO_CART, DECREASE_CART, REMOVE_FROM_CART, selectCartItems, selectCartTotalPrice, selectCartTotalQuantity } from '../redux/slice/cartSlice'
 import {FaTrashAlt} from 'react-icons/fa'
+
+
 
 export const Cart = () => {
 const cartItems = useSelector(selectCartItems)
 const cartTotalQuantity = useSelector(selectCartTotalQuantity)
 const cartTotalPrice = useSelector(selectCartTotalPrice)
+const dispatch = useDispatch()
+const increaseCart = (product) =>{
+  dispatch(ADD_TO_CART(product))
+}
+const decreaseCart = (product) =>{
+dispatch(DECREASE_CART(product))
+}
+
+const removeProduct = (product) =>{
+  dispatch(REMOVE_FROM_CART(product))
+}
+
 
   return (
    <section>
@@ -38,13 +52,13 @@ return(
             </div>
             <div className="mt-4 flex justify-between sm:space-y-6 sm:mt-0 sm:block sm:space-x-6">
               <div className="flex items-center border-gray-100">
-                <span className="cursor-pointer rounded-l bg-gray-100 py-1 px-3.5 duration-100 hover:bg-blue-500 hover:text-blue-50"> - </span>
-                <input className="h-8 w-8 border bg-white text-center text-xs outline-none" type="number" defaultValue={cartQuantity} min="1" />
-                <span className="cursor-pointer rounded-r bg-gray-100 py-1 px-3 duration-100 hover:bg-blue-500 hover:text-blue-50"> + </span>
+                <span className="cursor-pointer rounded-l bg-gray-100 py-1 px-3.5 duration-100 hover:bg-blue-500 hover:text-blue-50" onClick={() => decreaseCart(product)}> - </span>
+                <p className="flex justify-center items-center h-8 w-8 border bg-white text-center  text-xs outline-none" type="number">{cartQuantity}  </p>
+                <span className="cursor-pointer rounded-r bg-gray-100 py-1 px-3 duration-100 hover:bg-blue-500 hover:text-blue-50" onClick={() => increaseCart(product)}> + </span>
               </div>
               <div className="flex items-center space-x-4">
                 <p className="text-sm">{(price * cartQuantity).toFixed(2)}€</p>
-               <FaTrashAlt className='text-red-400'></FaTrashAlt>
+               <FaTrashAlt className='text-red-400' onClick={() => removeProduct(product)} ></FaTrashAlt>
               </div>
             </div>
           </div>

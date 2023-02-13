@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { act } from 'react-dom/test-utils';
 import { toast } from 'react-toastify';
 
 const initialState = {
@@ -18,21 +17,42 @@ const cartSlice = createSlice({
             if(productIndex >= 0){
                 //product already in cart
                 state.cartItems[productIndex].cartQuantity += 1
-                toast.success(`${action.payload.name} increased to cart`,{position:'top-left'})
+                toast.info(`${action.payload.name} increased to cart`,{position:'top-left'})
 
-            }else{
+            } else {
                 const tempProduct = {...action.payload, cartQuantity: 1}
                 state.cartItems.push(tempProduct)
-                toast.success(`${action.payload.name} added to cart`,{position:'top-left'})
+                toast.info(`${action.payload.name} added to cart`,{position:'top-left'})
 
             }
             //save cart to localStorage
+            localStorage.setItem('cartItems',JSON.stringify(state.cartItems))
+        },
+
+        DECREASE_CART(state,action){
+            const productIndex = state.cartItems.findIndex((product) => product.id === action.payload.id)
+
+            if (state.cartItems[productIndex].cartQuantity > 1) {
+                state.cartItems[productIndex].cartQuantity -= 1
+                toast.info(`${action.payload.name} decreased by one`,{position:'top-left'})
+            } else{
+                const updatedCart = state.cartItems.filter((product) => product.id !== action.payload.id)
+                state.cartItems = updatedCart
+                toast.success(`${action.payload.name} removed from cart`,{position:'top-left'})
+                localStorage.setItem('cartItems',JSON.stringify(state.cartItems))
+            }
+        },
+
+        REMOVE_FROM_CART(state,action){
+            const updatedCart = state.cartItems.filter((product) => product.id !== action.payload.id)
+            state.cartItems = updatedCart
+            toast.success(`${action.payload.name} removed from cart`,{position:'top-left'})
             localStorage.setItem('cartItems',JSON.stringify(state.cartItems))
         }
     }
 });
 
-export const { ADD_TO_CART } = cartSlice.actions
+export const { ADD_TO_CART,DECREASE_CART,REMOVE_FROM_CART } = cartSlice.actions
 export const selectCartItems = (state) => state.cart.cartItems
 export const selectCartTotalQuantity = (state) => state.cart.selectCartTotalQuantity
 export const selectCartTotalPrice = (state) => state.cart.cartTotalPrice
