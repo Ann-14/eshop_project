@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { AiOutlineClose, AiOutlineMenu, AiOutlineShoppingCart, AiOutlineUser } from 'react-icons/ai'
+
 import { auth } from '../firebase/config'
 import { onAuthStateChanged, signOut } from 'firebase/auth'
 
@@ -9,8 +10,11 @@ import { useDispatch } from 'react-redux'
 import { removeActiveUser, setActiveUser } from '../redux/slice/authSlice'
 import { ShowOnLogin, ShowOnLogout } from './HiddenLink'
 import { AdminLink } from './adminRoute/AdminRoute'
+import { Theme } from './Theme'
 
-const Header = () => {
+
+
+const Header = ({theme,toggleTheme}) => {
   const [nav, setNav] = useState(false)
   const [userName, setUserName] = useState('')
   const navigate = useNavigate()
@@ -54,16 +58,18 @@ const Header = () => {
     }).catch((error) => {
       toast.error(error.message)
     });
+
+
   }
 
   return (
-    <header className=' flex justify-between items-center h-24 max-w-[1240px] mx-auto px-4'>
-      {/* Logo link */}
+    <>
+    <header className=' flex justify-between items-center h-24 max-w-[1240px] mx-auto px-4' >
       <div>
-        <Link to='/'><h2 className='w-full text-3xl font-bold text-[#00df9a] m-4'>The Colorsite</h2> </Link>
+        <Link to='/'><h2 className= 'w-full text-3xl font-bold text-primary m-4 data'>The Colorsite</h2> </Link>
       </div>
       <div>
-        {/* //Middle links */}
+        {/*----------- Middle links----------------- */}
         <ul className='hidden md:flex gap-4'>
           <AdminLink>
             <Link to='/admin/home'>Admin</Link>
@@ -72,12 +78,13 @@ const Header = () => {
           <Link to='/contact'>Contact</Link>
         </ul>
       </div>
-      {/* //Right links */}
+      {/* //--------------Right links------------- */}
       <ul className='hidden md:flex gap-4'>
         <ShowOnLogout>
           <Link to='/login'>Login</Link>
         </ShowOnLogout>
-        {/* //TODO profile page */}
+        {/* TODO profile page */}
+
         <ShowOnLogin>
           <button><AiOutlineUser />Hi,{userName}</button>
         </ShowOnLogin>
@@ -88,7 +95,10 @@ const Header = () => {
         <Link to='/resetpassword'>ResetPassword</Link>
         <Link to='/cart' className='flex'>Cart<AiOutlineShoppingCart /><p>0</p> </Link>
       </ul>
-
+      {/* --------THEME toggle------ */}
+    <Theme toggleTheme={toggleTheme} theme={theme} />
+      {/* -------
+      --DRAWER on mobile---------- */}
       <div onClick={handleNav} className='block md:hidden'>
         {nav ? <AiOutlineClose size={20} /> : <AiOutlineMenu size={20} />}
       </div>
@@ -117,6 +127,7 @@ const Header = () => {
         </div>
       </ul>
     </header>
+</>
   )
 }
 
