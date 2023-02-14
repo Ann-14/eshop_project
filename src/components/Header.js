@@ -6,19 +6,27 @@ import { auth } from '../firebase/config'
 import { onAuthStateChanged, signOut } from 'firebase/auth'
 
 import { toast } from 'react-toastify'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { removeActiveUser, setActiveUser } from '../redux/slice/authSlice'
 import { ShowOnLogin, ShowOnLogout } from './HiddenLink'
 import { AdminLink } from './adminRoute/AdminRoute'
 import { Theme } from './Theme'
-
+import { CALCULATE_TOTAL_ITEMS, selectCartTotalQuantity } from '../redux/slice/cartSlice'
 
 
 const Header = ({theme,toggleTheme}) => {
+  
   const [nav, setNav] = useState(false)
   const [userName, setUserName] = useState('')
   const navigate = useNavigate()
   const dispatch = useDispatch()
+  
+  const cartTotalQuantity = useSelector(selectCartTotalQuantity)
+
+  useEffect(() => {
+    dispatch(CALCULATE_TOTAL_ITEMS())
+  }, [dispatch])
+  
 
   //monitor user state
   useEffect(() => {
@@ -100,7 +108,7 @@ const Header = ({theme,toggleTheme}) => {
           <Link to='/' onClick={handleLogout}>Logout </Link>
         </ShowOnLogin>
         <Link to='/resetpassword'>ResetPassword</Link>
-        <Link to='/cart' className='flex'>Cart<AiOutlineShoppingCart /><p>0</p> </Link>
+        <Link to='/cart' className='flex'>Cart<AiOutlineShoppingCart /><p>{cartTotalQuantity}</p> </Link>
       </ul>
       {/* --------THEME toggle------ */}
     <Theme toggleTheme={toggleTheme} theme={theme} />
