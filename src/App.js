@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 //Auth Pages
-import { Home, Contact,Admin,Login,SignUp } from './pages/';
+import { HomePage, Contact,Admin,Login,SignUp, ProductsPage } from './pages/';
 
 //Components
 import { Header, Footer, ResetPassword, AdminRoute,ProductDetails } from './components';
@@ -11,7 +11,7 @@ import { Header, Footer, ResetPassword, AdminRoute,ProductDetails } from './comp
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Cart } from './pages/Cart';
-import { HomePage } from './pages/HomePage';
+
 
 
 function App() {
@@ -22,8 +22,8 @@ function App() {
           <ToastContainer />
           <Header />
           <Routes>
-            <Route path='/' element={<Home />}></Route>
-            <Route path='/home' element={<Home />}></Route>
+            <Route path='/' element={<HomePage />}></Route>
+            <Route path='/productsPage' element={<ProductsPage />}></Route>
             <Route path='/contact' element={<Contact />}></Route>
             <Route path='/login' element={<Login />}></Route>
             <Route path='/homePage' element={<HomePage />}></Route>

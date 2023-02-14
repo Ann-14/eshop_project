@@ -1,7 +1,7 @@
 
 import { Product } from '../components/product/Product'
 
-export const Home = () => {
+export const ProductsPage = () => {
   
   return (
     <>

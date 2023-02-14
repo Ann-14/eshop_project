@@ -12,21 +12,26 @@ import { ShowOnLogin, ShowOnLogout } from './HiddenLink'
 import { AdminLink } from './adminRoute/AdminRoute'
 import { Theme } from './Theme'
 import { CALCULATE_TOTAL_ITEMS, selectCartTotalQuantity } from '../redux/slice/cartSlice'
+import { PhotoIcon } from './UI'
 
 
-const Header = ({theme,toggleTheme}) => {
-  
+
+
+
+
+const Header = ({ theme, toggleTheme }) => {
+
   const [nav, setNav] = useState(false)
   const [userName, setUserName] = useState('')
   const navigate = useNavigate()
   const dispatch = useDispatch()
-  
+
   const cartTotalQuantity = useSelector(selectCartTotalQuantity)
 
   useEffect(() => {
     dispatch(CALCULATE_TOTAL_ITEMS())
   }, [dispatch])
-  
+
 
   //monitor user state
   useEffect(() => {
@@ -72,78 +77,71 @@ const Header = ({theme,toggleTheme}) => {
 
   return (
     <>
-    <header className=' flex justify-between items-center h-24 max-w-[1240px] mx-auto px-4' >
-    
-<lord-icon
-    src="https://cdn.lordicon.com/vixtkkbk.json"
-    trigger="hover"
-    style={{width:"50px",height:"50px"}}>
-</lord-icon>
-      <div>
-        <Link to='/'><h2 className= 'w-full text-3xl font-bold text-primary m-4 data'>The Colorsite</h2> </Link>
-      </div>
-      <div>
-        {/*----------- Middle links----------------- */}
-        <ul className='hidden md:flex gap-4'>
-          <AdminLink>
-            <Link to='/admin/home'>Admin</Link>
-          </AdminLink>
-          <Link to='/contact'>Contact</Link>
-          <Link to='/homePage'>HOMETEST</Link>
-          <Link to='/home'>Home</Link>
-        </ul>
-      </div>
-      {/* //--------------Right links------------- */}
-      <ul className='hidden md:flex gap-4'>
-        <ShowOnLogout>
-          <Link to='/login'>Login</Link>
-        </ShowOnLogout>
-        {/* TODO profile page */}
+      <header className=' flex justify-between items-center h-24 max-w-[1240px] mx-auto px-4' >
 
-        <ShowOnLogin>
-          <button><AiOutlineUser />Hi,{userName}</button>
-        </ShowOnLogin>
-        <Link to='/signup'>Sign up</Link>
-        <ShowOnLogin>
-          <Link to='/' onClick={handleLogout}>Logout </Link>
-        </ShowOnLogin>
-        <Link to='/resetpassword'>ResetPassword</Link>
-        <Link to='/cart' className='flex'>Cart<AiOutlineShoppingCart /><p>{cartTotalQuantity}</p> </Link>
-      </ul>
-      {/* --------THEME toggle------ */}
-    <Theme toggleTheme={toggleTheme} theme={theme} />
-      {/* -------
-      --DRAWER on mobile---------- */}
-      <div onClick={handleNav} className='block md:hidden'>
-        {nav ? <AiOutlineClose size={20} /> : <AiOutlineMenu size={20} />}
-      </div>
-      <ul className={nav ? 'fixed left-0 top-0 w-[60%] h-full border-r border-r-gray-900 bg-[#000300] ease-in-out duration-500' : 'ease-in-out duration-500 fixed left-[-100%]'}>
+        <PhotoIcon/>
         <div>
-          <Link to='/'><h2 className='w-full text-3xl font-bold text-[#00df9a] m-4'>The Colorsite</h2> </Link>
+          <Link to='/'><h2 className='w-full text-3xl font-bold text-primary m-4 data'>The Colorsite</h2> </Link>
         </div>
-        <div className='flex flex-col text-white '>
-          <AdminLink>
-            <Link to='/admin/home'>Admin</Link>
-          </AdminLink>
-          <Link to='/'>Home</Link>
-          <Link to='/contact'>Contact</Link>
-          <Link to='/homePage'>HOMETEST</Link>
+        <div>
+          {/*----------- Middle links----------------- */}
+          <ul className='hidden md:flex gap-4'>
+            <AdminLink>
+              <Link to='/admin/home'>Admin</Link>
+            </AdminLink>
+            <Link to='/contact'>Contact</Link>
+            <Link to='/homePage'>Home</Link>
+            <Link to='/productsPage'>Services</Link>
+          </ul>
+        </div>
+        {/* //--------------Right links------------- */}
+        <ul className='hidden md:flex gap-4'>
           <ShowOnLogout>
-            <Link to='/login'>Login</Link>
+            <Link to='/login'>Sign in</Link>
+
           </ShowOnLogout>
+          {/* TODO profile page */}
+
           <ShowOnLogin>
-            <button><AiOutlineUser>Hi,{userName}</AiOutlineUser></button>
+            <button><AiOutlineUser />Hi,{userName}</button>
           </ShowOnLogin>
-          <Link to='/signup'>Sign up</Link>
           <ShowOnLogin>
             <Link to='/' onClick={handleLogout}>Logout </Link>
           </ShowOnLogin>
-          <Link to='/resetpassword'>ResetPassword</Link>
-          <Link to='/cart'>Cart<AiOutlineShoppingCart /><p>0</p> </Link>
+          <Link to='/cart' className='flex'><AiOutlineShoppingCart /><p>{cartTotalQuantity}</p> </Link>
+        </ul>
+        {/* --------THEME toggle------ */}
+        <Theme toggleTheme={toggleTheme} theme={theme} />
+        {/* ---- MOBILE NavBar ---- */}
+        <div onClick={handleNav} className='block md:hidden'>
+          {nav ? <AiOutlineClose size={20} /> : <AiOutlineMenu size={20} />}
         </div>
-      </ul>
-    </header>
-</>
+        <ul className={nav ? 'fixed left-0 top-0 w-[60%] h-full border-r border-r-gray-900 bg-[#000300] ease-in-out duration-500' : 'ease-in-out duration-500 fixed left-[-100%]'}>
+          <div>
+            <Link to='/'><h2 className='w-full text-3xl font-bold m-4'>The Colorsite</h2> </Link>
+          </div>
+          <div className='flex flex-col text-white '>
+            <AdminLink>
+              <Link to='/admin/home'>Admin</Link>
+            </AdminLink>
+            <Link to='/contact'>Contact</Link>
+            <Link to='/homePage'>Home</Link>
+            <Link to='/productsPage'>Products</Link>
+            <ShowOnLogout>
+              <Link to='/login'>Sign in</Link>
+            </ShowOnLogout>
+            <ShowOnLogin>
+              <button><AiOutlineUser>Hi,{userName}</AiOutlineUser></button>
+            </ShowOnLogin>
+            <ShowOnLogin>
+              <Link to='/' onClick={handleLogout}>Logout </Link>
+            </ShowOnLogin>
+
+            <Link to='/cart'><AiOutlineShoppingCart /><p>{cartTotalQuantity}</p> </Link>
+          </div>
+        </ul>
+      </header>
+    </>
   )
 }
 
