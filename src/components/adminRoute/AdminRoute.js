@@ -7,7 +7,8 @@ export const AdminRoute = ({children}) => {
     const userEmail = useSelector(selectEmail)
 
     if(userEmail === 'test2@gmail.com')
-    {return children}else{
+    {return children}
+    else {
         return (
             <section>
                 <h2>Acces denied</h2>

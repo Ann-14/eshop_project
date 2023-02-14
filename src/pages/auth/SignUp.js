@@ -61,11 +61,11 @@ export const SignUp = () => {
                 </label>
                 <label htmlFor="password">
                   <p className="font-medium  text-slate-200 pb-2">Password</p>
-                  <input id="password" name="password" type="password" className="w-full py-3 border border-slate-200 rounded-lg px-3 focus:outline-none focus:border-slate-500 hover:shadow text-black" placeholder="Enter your password" onChange={(e) => setPassword(e.target.value)} required />
+                  <input id="password" name="password" type="password"  autoComplete="on" className="w-full py-3 border border-slate-200 rounded-lg px-3 focus:outline-none focus:border-slate-500 hover:shadow text-black" placeholder="Enter your password" onChange={(e) => setPassword(e.target.value)} required />
                 </label>
                 <label htmlFor="passwordConfirm">
                   <p className="font-medium  text-slate-200 pb-2">Password Confirmation</p>
-                  <input id="passwordConfirm" name="passwordConfirm" type="password" className="w-full py-3 border border-slate-200 rounded-lg px-3 focus:outline-none focus:border-slate-500 hover:shadow text-black" placeholder="Confirm your password" onChange={(e) => setPasswordConfirm(e.target.value)} required />
+                  <input id="passwordConfirm" name="passwordConfirm" type="password" autoComplete="on" className="w-full py-3 border border-slate-200 rounded-lg px-3 focus:outline-none focus:border-slate-500 hover:shadow text-black" placeholder="Confirm your password" onChange={(e) => setPasswordConfirm(e.target.value)} required />
                 </label>
                 <div className="flex gap-4">
                   <button className="w-full py-3 font-medium text-white bg-indigo-600 hover:bg-indigo-500 rounded-lg border-indigo-500 hover:shadow inline-flex space-x-2 items-center justify-center" disabled={loading} type='submit'>Sign up

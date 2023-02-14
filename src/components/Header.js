@@ -65,6 +65,12 @@ const Header = ({theme,toggleTheme}) => {
   return (
     <>
     <header className=' flex justify-between items-center h-24 max-w-[1240px] mx-auto px-4' >
+    
+<lord-icon
+    src="https://cdn.lordicon.com/vixtkkbk.json"
+    trigger="hover"
+    style={{width:"50px",height:"50px"}}>
+</lord-icon>
       <div>
         <Link to='/'><h2 className= 'w-full text-3xl font-bold text-primary m-4 data'>The Colorsite</h2> </Link>
       </div>
@@ -74,8 +80,9 @@ const Header = ({theme,toggleTheme}) => {
           <AdminLink>
             <Link to='/admin/home'>Admin</Link>
           </AdminLink>
-          <Link to='/'>Home</Link>
           <Link to='/contact'>Contact</Link>
+          <Link to='/homePage'>HOMETEST</Link>
+          <Link to='/home'>Home</Link>
         </ul>
       </div>
       {/* //--------------Right links------------- */}
@@ -112,6 +119,7 @@ const Header = ({theme,toggleTheme}) => {
           </AdminLink>
           <Link to='/'>Home</Link>
           <Link to='/contact'>Contact</Link>
+          <Link to='/homePage'>HOMETEST</Link>
           <ShowOnLogout>
             <Link to='/login'>Login</Link>
           </ShowOnLogout>

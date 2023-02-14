@@ -70,7 +70,7 @@ const provider = new GoogleAuthProvider();
                 </label>
                 <label htmlFor="password">
                   <p className="font-medium  text-slate-200 pb-2">Password</p>
-                  <input id="password" name="password" type="password" className="w-full py-3 border border-slate-200 rounded-lg px-3 focus:outline-none focus:border-slate-500 hover:shadow text-black" placeholder="Enter your password" onChange={(e) => setPassword(e.target.value)} required/>
+                  <input id="password" name="password" type="password"  autoComplete="on" className="w-full py-3 border border-slate-200 rounded-lg px-3 focus:outline-none focus:border-slate-500 hover:shadow text-black" placeholder="Enter your password" onChange={(e) => setPassword(e.target.value)} required/>
                 </label>
                 <div className="flex gap-4">
                     <label htmlFor="remember" className="">

@@ -1,15 +1,17 @@
-import React from 'react'
+
+import { useEffect } from 'react';
+import { useState } from 'react';
 import {MdDarkMode,MdOutlineDarkMode} from 'react-icons/md'
 export const Theme = () => {
     
-        const [theme, setTheme] = React.useState('light');
+        const [theme, setTheme] = useState('corporate');
         
         const toggleTheme = () => {
-          setTheme(theme === 'dark' ? 'light' : 'dark');
+          setTheme(theme === 'mytheme' ? 'corporate' : 'mytheme');
         };
 
         // initially set the theme and "listen" for changes to apply them to the HTML tag
-        React.useEffect(() => {
+       useEffect(() => {
           document.querySelector('html').setAttribute('data-theme', theme);
         }, [theme]);
         
