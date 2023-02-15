@@ -53,8 +53,6 @@ export const AddProduct = () => {
   });
 
 
- 
-
 function detectForm  (id, f1, f2){
 if(id === 'ADD'){
   return f1
@@ -62,7 +60,6 @@ if(id === 'ADD'){
   return f2
 }
 }
-
 
 
   const handleInputChange = (e) => {

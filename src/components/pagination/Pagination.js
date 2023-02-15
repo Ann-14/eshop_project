@@ -40,9 +40,8 @@ export const Pagination = ({
         setMaxPageNumberLimit(maxPageNumberLimit - pageNumberLimit)
         setMinPageNumberLimit(minPageNumberLimit - pageNumberLimit)
     }
-
-
   };
+  
   return (
     <>
       <div className="flex justify-center">

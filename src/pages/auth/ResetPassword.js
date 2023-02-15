@@ -3,8 +3,8 @@ import { sendPasswordResetEmail } from 'firebase/auth'
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
-import { auth } from '../firebase/config'
-import { Loader } from './Loader'
+import { auth } from '../../firebase/config'
+import { Loader } from '../../components/Loader'
 
 export const ResetPassword = () => {
   const [email, setEmail] = useState('')

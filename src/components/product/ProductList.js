@@ -12,15 +12,13 @@ export const ProductList = ({ products }) => {
   const filteredProducts = useSelector(selectFilteredProducts)
   // Pagination states
   const [currentPage, setCurrentPage] = useState(1)
-  const [productsPerPage, setProductsPerPage] = useState(9)
+  const [productsPerPage, setProductsPerPage] = useState(4)
 
   // Get Current Products
 const indexOfLastProduct = currentPage * productsPerPage
 const indexOfFirstProduct = indexOfLastProduct - productsPerPage
 const currentProducts = filteredProducts.slice(indexOfFirstProduct,indexOfLastProduct)
 
-  
-  
   useEffect(() => {
     dispatch(FILTER_BY_SEARCH({
       products, search
@@ -33,7 +31,6 @@ const currentProducts = filteredProducts.slice(indexOfFirstProduct,indexOfLastPr
     }))
   }, [sort,products,dispatch])
 
-  
   return (
     <>
       <section className="flex flex-col">
