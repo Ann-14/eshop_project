@@ -18,7 +18,7 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <div className=' min-h-screen'>
+        <div className='min-h-screen container mx-auto px-6 py-4 text-center'>
           <ToastContainer />
           <Header />
           <Routes>

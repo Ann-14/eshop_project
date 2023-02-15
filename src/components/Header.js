@@ -12,7 +12,7 @@ import { ShowOnLogin, ShowOnLogout } from './HiddenLink'
 import { AdminLink } from './adminRoute/AdminRoute'
 import { Theme } from './Theme'
 import { CALCULATE_TOTAL_ITEMS, selectCartTotalQuantity } from '../redux/slice/cartSlice'
-import { PhotoIcon } from './UI'
+import { BasketIcon, PhotoIcon } from './UI'
 
 
 
@@ -77,42 +77,39 @@ const Header = ({ theme, toggleTheme }) => {
 
   return (
     <>
-      <header className=' flex justify-between items-center h-24 max-w-[1240px] mx-auto px-4' >
-
+      <header className='flex justify-between items-center h-24 max-w-[1240px] ' >
         <PhotoIcon/>
         <div>
           <Link to='/'><h2 className='w-full text-3xl font-bold text-primary m-4 data'>The Colorsite</h2> </Link>
         </div>
-        <div>
           {/*----------- Middle links----------------- */}
+        <div>
           <ul className='hidden md:flex gap-4'>
             <AdminLink>
               <Link to='/admin/home'>Admin</Link>
             </AdminLink>
-            <Link to='/contact'>Contact</Link>
             <Link to='/homePage'>Home</Link>
             <Link to='/productsPage'>Services</Link>
+            <Link to='/contact'>Contact</Link>
           </ul>
         </div>
         {/* //--------------Right links------------- */}
         <ul className='hidden md:flex gap-4'>
           <ShowOnLogout>
             <Link to='/login'>Sign in</Link>
-
           </ShowOnLogout>
           {/* TODO profile page */}
-
           <ShowOnLogin>
-            <button><AiOutlineUser />Hi,{userName}</button>
+            <button><AiOutlineUser /></button>
           </ShowOnLogin>
           <ShowOnLogin>
             <Link to='/' onClick={handleLogout}>Logout </Link>
           </ShowOnLogin>
-          <Link to='/cart' className='flex'><AiOutlineShoppingCart /><p>{cartTotalQuantity}</p> </Link>
+          <Link to='/cart' className='flex'><BasketIcon /><p>{cartTotalQuantity}</p> </Link>
         </ul>
-        {/* --------THEME toggle------ */}
         <Theme toggleTheme={toggleTheme} theme={theme} />
-        {/* ---- MOBILE NavBar ---- */}
+
+        {/* ---- MOBILE NAVBAR ---- */}
         <div onClick={handleNav} className='block md:hidden'>
           {nav ? <AiOutlineClose size={20} /> : <AiOutlineMenu size={20} />}
         </div>
@@ -124,20 +121,19 @@ const Header = ({ theme, toggleTheme }) => {
             <AdminLink>
               <Link to='/admin/home'>Admin</Link>
             </AdminLink>
-            <Link to='/contact'>Contact</Link>
             <Link to='/homePage'>Home</Link>
             <Link to='/productsPage'>Products</Link>
+            <Link to='/contact'>Contact</Link>
             <ShowOnLogout>
               <Link to='/login'>Sign in</Link>
             </ShowOnLogout>
             <ShowOnLogin>
-              <button><AiOutlineUser>Hi,{userName}</AiOutlineUser></button>
+              <button><AiOutlineUser></AiOutlineUser></button>
             </ShowOnLogin>
             <ShowOnLogin>
               <Link to='/' onClick={handleLogout}>Logout </Link>
             </ShowOnLogin>
-
-            <Link to='/cart'><AiOutlineShoppingCart /><p>{cartTotalQuantity}</p> </Link>
+            <Link to='/cart'><BasketIcon/><p>{cartTotalQuantity}</p> </Link>
           </div>
         </ul>
       </header>
