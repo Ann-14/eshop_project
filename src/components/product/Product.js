@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux"
 import { useFetchCollection } from "../../hooks/useFetchCollection"
 import { GET_PRICE_RANGE, selectProducts, STORE_PRODUCTS } from "../../redux/slice/productSlice"
 import { Loader } from "../Loader"
-import { ProductFilter } from "./ProductFilter"
 import { ProductList } from "./ProductList"
 
 export const Product = () => {
@@ -27,18 +26,13 @@ export const Product = () => {
   }, [dispatch, data])
 
   return (
-    <main className="min-h-screen flex">
-     
-        <aside className="w-56 flex-none">
+    <main className="min-h-screen justify-center">
+        {/* <aside className="flex flex-col justify-end">
           {loading ? null : <ProductFilter />}
-        </aside>
-        <div>
+        </aside> */}
           {loading ? <Loader /> : (
             <ProductList products={products} />
           )}
-        </div>
-
-      
     </main>
   )
 }

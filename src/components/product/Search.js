@@ -5,7 +5,8 @@ export const Search = ({ value, onChange }) => {
         <>
             <div className='flex'>
                 <BiSearch className='mt-1' />
-                <input type='text' value={value} onChange={onChange} placeholder='Search' />
+                <input type='text' value={value} onChange={onChange} placeholder='Search'  className="input input-bordered h-8"/>
+              
             </div>
         </>
     )

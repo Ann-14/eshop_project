@@ -4,7 +4,7 @@ import Spline from "@splinetool/react-spline";
 import imgGrid1 from "./../assets/fabian-gieske-v_bBdJVOWvw-unsplash.jpg";
 import imgGrid2 from "./../assets/nathan-dumlao-5BB_atDT4oA-unsplash.jpg";
 import imgGrid3 from "./../assets/product-school-nOvIa_x_tfo-unsplash.jpg";
-import imgGrid4 from "./../assets/nathan-dumlao-EytWx3BOrwI-unsplash.jpg";
+// import imgGrid4 from "./../assets/nathan-dumlao-EytWx3BOrwI-unsplash.jpg";
 import { Contact } from "./Contact";
 
 export const HomePage = () => {

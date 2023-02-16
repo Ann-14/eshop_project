@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { FILTER_BY_CATEGORY, FILTER_BY_PRICE } from "../../redux/slice/filterSlice"
+import { FILTER_BY_CATEGORY, FILTER_BY_PRICE, FILTER_BY_SEARCH, SORT_PRODUCTS } from "../../redux/slice/filterSlice"
 import { selectMaxPrice, selectMinPrice, selectProducts } from "../../redux/slice/productSlice"
 
 
@@ -11,6 +11,7 @@ export const ProductFilter = () => {
   const products = useSelector(selectProducts)
 const minPrice = useSelector(selectMinPrice)
 const maxPrice = useSelector(selectMaxPrice)
+
 
 const allCategories = [
   "All",
@@ -36,10 +37,12 @@ const clearFilters = () => {
 
 }
 
+
   return (
     <>
-      <aside className="flex flex-col">
-        <h3>Categories</h3>
+
+      {/* <aside className="flex flex-col"> */}
+        
         <div className="flex flex-col">
           {allCategories.map((cat,index) =>{
             return (
@@ -53,9 +56,9 @@ const clearFilters = () => {
         <div>
           <input type='range' value={price} onChange={(e) => setPrice(e.target.value)} min={minPrice} max={maxPrice} />
         </div>
-        <br />
+        
         <button onClick={clearFilters} >Clear Filters</button>
-      </aside>
+      {/* </aside> */}
     </>
   )
 }
