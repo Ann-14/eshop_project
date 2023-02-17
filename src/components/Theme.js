@@ -3,10 +3,10 @@ import { useState } from 'react';
 import {MdDarkMode,MdOutlineDarkMode} from 'react-icons/md'
 export const Theme = () => {
     
-        const [theme, setTheme] = useState('corporate');
+        const [theme, setTheme] = useState('light');
         
         const toggleTheme = () => {
-          setTheme(theme === 'mytheme' ? 'corporate' : 'mytheme');
+          setTheme(theme === 'black' ? 'light' : 'black');
         };
         
        useEffect(() => {

@@ -77,11 +77,9 @@ const Header = ({ theme, toggleTheme }) => {
 
   return (
     <>
-      <header className='flex justify-between items-center h-24 max-w-[1240px] ' >
+      <header className='flex justify-between items-center h-8 md:h-24 max-w-[1240px] ' >
         <PhotoIcon/>
-        <div>
-          <Link to='/'><h2 className='w-full text-3xl font-bold text-primary m-4 data'>The Colorsite</h2> </Link>
-        </div>
+        
           {/*----------- Middle links----------------- */}
         <div>
           <ul className='hidden md:flex gap-4'>
@@ -96,7 +94,7 @@ const Header = ({ theme, toggleTheme }) => {
         {/* //--------------Right links------------- */}
         <ul className='hidden md:flex gap-4'>
           <ShowOnLogout>
-            <Link to='/login'>Sign in</Link>
+            <Link to='/login'><button className='btn btn-sm btn-accent'>Sign in</button></Link>
           </ShowOnLogout>
           {/* TODO profile page */}
           <ShowOnLogin>
