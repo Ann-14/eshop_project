@@ -25,9 +25,9 @@ export const Pagination = ({
   const goToNextPage = () => {
     setCurrentPage(currentPage + 1);
     //show next block of numberOfPages
-    if(currentPage + 1 > maxPageNumberLimit){
-        setMaxPageNumberLimit(maxPageNumberLimit + pageNumberLimit)
-        setMinPageNumberLimit(minPageNumberLimit + pageNumberLimit)
+    if (currentPage + 1 > maxPageNumberLimit) {
+      setMaxPageNumberLimit(maxPageNumberLimit + pageNumberLimit)
+      setMinPageNumberLimit(minPageNumberLimit + pageNumberLimit)
     }
 
   };
@@ -36,12 +36,12 @@ export const Pagination = ({
     setCurrentPage(currentPage - 1);
 
     //show next block of numberOfPages
-    if((currentPage - 1) % pageNumberLimit === 0){
-        setMaxPageNumberLimit(maxPageNumberLimit - pageNumberLimit)
-        setMinPageNumberLimit(minPageNumberLimit - pageNumberLimit)
+    if ((currentPage - 1) % pageNumberLimit === 0) {
+      setMaxPageNumberLimit(maxPageNumberLimit - pageNumberLimit)
+      setMinPageNumberLimit(minPageNumberLimit - pageNumberLimit)
     }
   };
-  
+
   return (
     <>
       <div className="flex justify-center">
@@ -61,7 +61,7 @@ export const Pagination = ({
               if (page < maxPageNumberLimit + 1 && page > minPageNumberLimit) {
               }
               return (
-               
+
                 <button
                   key={page}
                   onClick={() => selectPage(page)}
@@ -78,7 +78,7 @@ export const Pagination = ({
 
             <li
               className={
-                currentPage ===numberOfPages[numberOfPages.length - 1]
+                currentPage === numberOfPages[numberOfPages.length - 1]
                   ? `hidden`
                   : `btn btn-sm btn-group btn-outline `
               }
@@ -86,11 +86,13 @@ export const Pagination = ({
             >
               Next
             </li>
+            <div className="mt-1">
             <p>
               <b>{`page ${currentPage}`}</b>
               <span>{` of `}</span>
               <b>{`${Math.ceil(totalPages)}`}</b>
             </p>
+            </div>
           </ul>
         </nav>
       </div>

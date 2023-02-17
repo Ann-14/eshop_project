@@ -48,7 +48,6 @@ export const ProductList = ({ products }) => {
   return (
     <>
       {/* ------Filters Navbar-------- */}
-
       <nav className="bg-gray-800 mb-10">
         <div className="mx-auto  px-2 sm:px-6 lg:px-8">
           <div className="relative flex h-16 items-center justify-between">
@@ -81,7 +80,6 @@ export const ProductList = ({ products }) => {
           </div>
         </div>
 
-
         {/* <!-- Mobile menu, show/hide based on menu state. --> */}
         <div className="sm:hidden md:visible" id="mobile-menu">
           {/* <a href="/#" className="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium" aria-current="page">Products Filter</a> */}
@@ -102,19 +100,14 @@ export const ProductList = ({ products }) => {
               </div>
             </div>
           </div>
-      
       </nav>
-
-
 
       {/* ------Images Section-------- */}
       <div className=" grid grid-col-1 md:grid-cols-2 lg:grid-cols-3 gap-4 ">
         {products.length === 0 ? (
           <p>No products found</p>
         ) :
-
           (
-
             currentProducts.map((product) => {
               return (
                 <div key={product.id} className='flex justify-center items-center'>
@@ -123,7 +116,6 @@ export const ProductList = ({ products }) => {
               )
             })
           )}
-
       </div>
 
       {/* ------Pagination-------- */}

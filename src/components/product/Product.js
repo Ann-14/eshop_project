@@ -8,8 +8,6 @@ import { ProductList } from "./ProductList"
 export const Product = () => {
   const { data, loading } = useFetchCollection('products')
   const products = useSelector(selectProducts)
-
-
   const dispatch = useDispatch()
 
   //we pass data coming from customHook to redux

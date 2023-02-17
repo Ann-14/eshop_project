@@ -51,12 +51,10 @@ export const ProductDetails = () => {
       toast.error('Product not found')
     }
   }
-  console.log(product)
+  
   return (
     <>
       <section>
-        <div>
-         
           <div className="btn">
             <Link to='/home'>&larr; Back to products</Link>
           </div>
@@ -132,12 +130,7 @@ export const ProductDetails = () => {
                 </div>
               </div>
             </section>
-
           )}
-
-
-
-        </div>
       </section>
     </>
   )
