@@ -46,32 +46,33 @@ export const Pagination = ({
     <>
       <div className="flex justify-center">
         <nav>
-          <ul className="flex list-style-none">
-            <li
+          <ul className="flex list-style-none gap-2">
+            <button
               className={
                 currentPage === numberOfPages[0]
                   ? `hidden`
-                  : `block py-1.5 px-3 border-0 bg-transparent outline-none transition-all duration-300 rounded-full text-gray-800 hover:text-gray-800 hover:bg-gray-200 focus:shadow-none`
+                  : `btn btn-sm btn-group btn-outline`
               }
               onClick={goToPrevPage}
             >
               Prev
-            </li>
+            </button>
             {numberOfPages.map((page) => {
               if (page < maxPageNumberLimit + 1 && page > minPageNumberLimit) {
               }
               return (
-                <li
+               
+                <button
                   key={page}
                   onClick={() => selectPage(page)}
                   className={
                     currentPage === page
-                      ? `block py-1.5 px-3 border-0 bg-blue-600 outline-none transition-all duration-300 rounded-full text-white hover:text-white hover:bg-blue-600 shadow-md focus:shadow-md`
-                      : ` block py-1.5 px-3 border-0 bg-transparent outline-none transition-all duration-300 rounded-full text-gray-800 hover:text-gray-800 hover:bg-gray-200 focus:shadow-none`
+                      ? `btn btn-sm btn-active `
+                      : ` btn btn-sm btn-outline `
                   }
                 >
                   {page}
-                </li>
+                </button>
               );
             })}
 
@@ -79,7 +80,7 @@ export const Pagination = ({
               className={
                 currentPage ===numberOfPages[numberOfPages.length - 1]
                   ? `hidden`
-                  : `block py-1.5 px-3 border-0 bg-transparent outline-none transition-all duration-300 rounded-full text-gray-800 hover:text-gray-800 hover:bg-gray-200 focus:shadow-none`
+                  : `btn btn-sm btn-group btn-outline `
               }
               onClick={goToNextPage}
             >

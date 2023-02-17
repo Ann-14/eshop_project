@@ -35,11 +35,11 @@ export const HomePage = () => {
       {/* -------- PRODUCTS--------  */}
      
 
-      <div class="container mx-auto px-6 pt-28 pb-28">
-        <h1 class="text-2xl font-semibold  lg:text-4xl">Services</h1>
-        <div class="mt-8 lg:-mx-12 lg:flex xl:mt-16">
-          <div class="mt-8 flex-1 lg:mx-12 lg:mt-0">
-            <div class="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3">
+      <div className="container mx-auto px-6 pt-28 pb-28">
+        <h1 className="text-2xl font-semibold  lg:text-4xl">Services</h1>
+        <div className="mt-8 lg:-mx-12 lg:flex xl:mt-16">
+          <div className="mt-8 flex-1 lg:mx-12 lg:mt-0">
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3">
               <div className="card  bg-base-100 shadow-xl image-full">
                 <figure>
                   <img src={imgGrid1} alt="Shoes" />

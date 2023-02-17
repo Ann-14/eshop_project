@@ -6,7 +6,7 @@ export const Sort = ({sort,setSort}) => {
       <>
        <div>
           
-          <select value={sort} onChange={(e) => setSort(e.target.value)} placeholder='sort by'>
+          <select value={sort} onChange={(e) => setSort(e.target.value)} className='select select-primary select-sm w-full max-w-xs'>
             <option value='latest'>Latest</option>
             <option value='lowest-price'>Lowest price</option>
             <option value='highest-price'>Highest Price</option>
