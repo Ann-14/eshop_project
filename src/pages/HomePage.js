@@ -21,16 +21,16 @@ export const HomePage = () => {
             <p className="mt-2 text-sm md:text-base">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis commodi cum cupiditate ducimus, fugit harum id necessitatibus odio quam quasi, quibusdam rem tempora voluptates. Cumque debitis dignissimos id quam vel!</p>
             <div className="flex justify-center lg:justify-start mt-6 gap-1">
             <Link to='/productsPage'>
-              <button className="btn">Get Started</button></Link>
+              <button className="btn btn-secondary">Get Started</button></Link>
             <Link to='/contact'>
-              <button className="btn btn-secondary">Learn more</button></Link>
+              <button className="btn">Learn more</button></Link>
               
             </div>
           </div>
         </div>
         <div className=" hidden lg:block md:w-1/2" style={{clipPath: 'polygon(10% 0, 100% 0%, 100% 100%, 0 100%)'}}>
           <div className="h-full object-cover " >
-          <Spline scene="https://prod.spline.design/sNuLt3pE0Cm3QWA5/scene.splinecode"/>
+          <Spline scene="https://prod.spline.design/sNuLt3pE0Cm3QWA5/scene.splinecode" />
             <div className="h-full bg-black opacity-25" />
           </div>
         </div>
@@ -41,7 +41,7 @@ export const HomePage = () => {
       <div className="md:hidden mx-4 h-3/4" >
         
           <div className="h-3/4 object-cover " >
-          <Spline scene="https://prod.spline.design/sNuLt3pE0Cm3QWA5/scene.splinecode"/>
+          <Spline scene="https://prod.spline.design/0VehDCnTN08Pe-af/scene.splinecode" />
             
           </div>
         </div>
@@ -52,7 +52,7 @@ export const HomePage = () => {
         <h1 className="text-2xl font-semibold  lg:text-4xl">Services</h1>
         <div className="mt-8 lg:-mx-12 lg:flex xl:mt-16">
           <div className="mt-8 flex-1 lg:mx-12 lg:mt-0">
-            <div className="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3">
+            <div  className="   grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3">
               <div className="card  bg-base-100 shadow-xl image-full">
                 <figure>
                   <img src={imgGrid1} alt="Shoes" />
@@ -66,7 +66,7 @@ export const HomePage = () => {
                 </div>
               </div>
 
-              <div className="card  bg-base-200 shadow-xl image-full">
+              <div   className=" card  bg-base-200 shadow-xl image-full">
                 <figure>
                   <img src={imgGrid2} alt="Shoes" />
                 </figure>

@@ -78,10 +78,11 @@ const Header = ({ theme, toggleTheme }) => {
   return (
     <>
       <header className='flex justify-between items-center h-8 md:h-24 max-w-[1240px] ' >
+       
         <PhotoIcon/>
         
           {/*----------- Middle links----------------- */}
-        <div>
+        <div className='font-semibold text-lg md:text-xl capitalize'>
           <ul className='hidden md:flex gap-4'>
             <AdminLink>
               <Link to='/admin/home'>Admin</Link>
@@ -93,9 +94,7 @@ const Header = ({ theme, toggleTheme }) => {
         </div>
         {/* //--------------Right links------------- */}
         <ul className='hidden md:flex gap-4'>
-          <ShowOnLogout>
-            <Link to='/login'><button className='btn btn-sm btn-accent'>Sign in</button></Link>
-          </ShowOnLogout>
+          
           {/* TODO profile page */}
           <ShowOnLogin>
             <button><AiOutlineUser /></button>
@@ -103,9 +102,13 @@ const Header = ({ theme, toggleTheme }) => {
           <ShowOnLogin>
             <Link to='/' onClick={handleLogout}>Logout </Link>
           </ShowOnLogin>
+          
+          <Theme toggleTheme={toggleTheme} theme={theme} />
+          <ShowOnLogout>
+            <Link to='/login'><button className='btn btn-sm '>Sign in</button></Link>
+          </ShowOnLogout>
           <Link to='/cart' className='flex'><BasketIcon /><p>{cartTotalQuantity}</p> </Link>
         </ul>
-        <Theme toggleTheme={toggleTheme} theme={theme} />
 
         {/* ---- MOBILE NAVBAR ---- */}
         <div onClick={handleNav} className='block md:hidden'>

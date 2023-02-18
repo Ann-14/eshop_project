@@ -13,7 +13,7 @@ export const ProductItem = ({ product, id, name, price, description, imageURL })
 
   return (
     <>
-      <div className="card w-96 bg-base-100 shadow-xl flex justify-center items-center ">
+      <div data-theme='light' className="card w-96 bg-slate-200 shadow-xl flex justify-center items-center ">
         <Link to={`/product-details/${id}`}>
           <figure><img src={imageURL} alt={name} className='h-80 w-80 object-cover rounded my-6' /></figure>
         </Link>
@@ -27,7 +27,8 @@ export const ProductItem = ({ product, id, name, price, description, imageURL })
             </Link>
           </div>
         </div>
-      </div>
+        </div>
+      
     </>
   )
 }
