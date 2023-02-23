@@ -7,7 +7,7 @@ module.exports = {
     
    themes: 
    
-   ["light", "dark", "black"],
+   ["light", "dark", "black","forest"],
    
 
     

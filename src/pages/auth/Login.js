@@ -7,6 +7,7 @@ import { GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup } from 
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Loader } from '../../components/Loader';
+import Spline from '@splinetool/react-spline';
 
 export const Login = () => {
   const [email, setEmail] = useState('')
@@ -51,9 +52,15 @@ const provider = new GoogleAuthProvider();
     <>
     {loading && <Loader/>}
     <ToastContainer/>
-      <section className="flex flex-col md:flex-row">
+    
+    <div
+        className="hero min-h-screen"
+        
+      >
+<div className="hero-overlay bg-opacity-60"></div>
+<Spline scene="https://prod.spline.design/sNuLt3pE0Cm3QWA5/scene.splinecode" />  
         {/* ---Log in Form Wrapper--- */}
-        <div className="flex bg-purple-300 md:w-1/2">
+        <div className="flex w-1/2  " >
           <div className="my-auto mx-auto overflow-hidden flex flex-col justify-center text-white py-4 ">
             <h1 className="text-4xl font-medium">Login</h1>
             <p className="text-slate-200 mt-2">Hi, Welcome back 👋</p>
@@ -90,9 +97,12 @@ const provider = new GoogleAuthProvider();
             </form>
           </div>
         </div>
+        
         {/* we hide img on small screen */}
-        <img src="https://images.pexels.com/photos/2523959/pexels-photo-2523959.jpeg" alt='bg' className='hidden md:flex h-screen md:w-1/2' />
-      </section>
+        {/* <Spline scene="https://prod.spline.design/sNuLt3pE0Cm3QWA5/scene.splinecode" /> */}
+        {/* <img src="https://images.pexels.com/photos/2523959/pexels-photo-2523959.jpeg" alt='bg' className='hidden md:flex h-screen md:w-1/2' /> */}
+   
+        </div>
     </>
   )
 }

@@ -6,7 +6,7 @@ export const Theme = () => {
         const [theme, setTheme] = useState('light');
         
         const toggleTheme = () => {
-          setTheme(theme === 'black' ? 'light' : 'black');
+          setTheme(theme === 'forest' ? 'light' : 'forest');
         };
         
        useEffect(() => {

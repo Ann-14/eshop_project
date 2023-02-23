@@ -6,6 +6,7 @@ import { auth } from '../../firebase/config'
 
 import { Loader } from '../../components/Loader'
 import { toast } from 'react-toastify'
+import Spline from '@splinetool/react-spline'
 
 export const SignUp = () => {
   const [email, setEmail] = useState('')
@@ -43,9 +44,14 @@ export const SignUp = () => {
   return (
     <>
       {loading && <Loader />}
-      <section className="flex flex-col md:flex-row">
+     <div
+        className="hero min-h-screen"
+        
+      >
+<div className="hero-overlay bg-opacity-60"></div>
+<Spline scene="https://prod.spline.design/sNuLt3pE0Cm3QWA5/scene.splinecode" /> 
         {/* ---Log in Form Wrapper--- */}
-        <div className="flex bg-purple-300 md:w-1/2">
+        <div className="flex w-1/2  " >
           <div className="my-auto mx-auto overflow-hidden flex flex-col justify-center text-white py-4 ">
             <h1 className="text-4xl font-medium">Sign up</h1>
             <div className="my-5">
@@ -80,8 +86,9 @@ export const SignUp = () => {
           </div>
         </div>
         {/* we hide img on small screen */}
-        <img src="https://images.pexels.com/photos/2523959/pexels-photo-2523959.jpeg" alt='bg' className='hidden md:flex h-screen md:w-1/2' />
-      </section>
+        {/* <img src="https://images.pexels.com/photos/2523959/pexels-photo-2523959.jpeg" alt='bg' className='hidden md:flex h-screen md:w-1/2' /> */}
+      </div>
+      
 
     </>
   )

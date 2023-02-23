@@ -5,7 +5,7 @@ export const BasketIcon = () => {
     <lord-icon
     src="https://cdn.lordicon.com/slkvcfos.json"
     trigger="hover"
-    colors="primary:#c026d3,secondary:#08a88a"
+    colors="primary:#08a88a,secondary:#08a88a"
     style={{
         width: "30px",
         height: "30px"
