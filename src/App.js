@@ -11,6 +11,7 @@ import { Header, Footer, ResetPassword, AdminRoute,ProductDetails } from './comp
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Cart } from './pages/Cart';
+import { ScrollToTop } from './components/UI/ScrollToTop';
 
 
 
@@ -21,6 +22,7 @@ function App() {
         <div className='min-h-screen container mx-auto pt-4 text-center body-font font-poppins'>
           <ToastContainer />
           <Header />
+          <ScrollToTop />
           <Routes>
             <Route path='/' element={<HomePage />}></Route>
             <Route path='/productsPage' element={<ProductsPage />}></Route>

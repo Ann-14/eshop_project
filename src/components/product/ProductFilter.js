@@ -9,56 +9,51 @@ export const ProductFilter = () => {
   const [price, setPrice] = useState(3000)
   const dispatch = useDispatch()
   const products = useSelector(selectProducts)
-const minPrice = useSelector(selectMinPrice)
-const maxPrice = useSelector(selectMaxPrice)
+  const minPrice = useSelector(selectMinPrice)
+  const maxPrice = useSelector(selectMaxPrice)
 
 
-const allCategories = [
-  "All",
-  ...new Set(products.map((product) => product.category))
-]
+  const allCategories = [
+    "All",
+    ...new Set(products.map((product) => product.category))
+  ]
 
-const filterProducts = (cat) => {
-setCategory(cat)
-dispatch(FILTER_BY_CATEGORY({
-  products, category:cat}))
-}
+  const filterProducts = (cat) => {
+    setCategory(cat)
+    dispatch(FILTER_BY_CATEGORY({
+      products, category: cat
+    }))
+  }
 
-useEffect(() => {
-dispatch(FILTER_BY_PRICE({
-products, price
-}))
-  
-}, [products,price,dispatch])
+  useEffect(() => {
+    dispatch(FILTER_BY_PRICE({
+      products, price
+    }))
 
-const clearFilters = () => {
-  setCategory('All')
-  setPrice(maxPrice)
+  }, [products, price, dispatch])
 
-}
+  const clearFilters = () => {
+    setCategory('All')
+    setPrice(maxPrice)
+
+  }
 
 
   return (
     <>
-
-      {/* <aside className="flex flex-col"> */}
-        
-        <div className="flex flex-col">
-          {allCategories.map((cat,index) =>{
-            return (
-              <button key={index} type='button' onClick={() => filterProducts(cat)}>{cat}</button>
-            )
-          })}
-          
-        </div>
-        <h3>Price</h3>
-        <p>{`${price}`}</p>
-        <div>
-          <input type='range' value={price} onChange={(e) => setPrice(e.target.value)} min={minPrice} max={maxPrice} />
-        </div>
-        
-        <button onClick={clearFilters} >Clear Filters</button>
-      {/* </aside> */}
+      <div className="flex flex-col">
+        {allCategories.map((cat, index) => {
+          return (
+            <button key={index} type='button' onClick={() => filterProducts(cat)}>{cat}</button>
+          )
+        })}
+      </div>
+      <h3>Price</h3>
+      <p>{`${price}`}</p>
+      <div>
+        <input type='range' value={price} onChange={(e) => setPrice(e.target.value)} min={minPrice} max={maxPrice} />
+      </div>
+      <button onClick={clearFilters} >Clear Filters</button>
     </>
   )
 }

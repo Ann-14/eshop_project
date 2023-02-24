@@ -25,9 +25,6 @@ export const Product = () => {
 
   return (
     <main className="min-h-screen justify-center items-center">
-        {/* <aside className="flex flex-col justify-end">
-          {loading ? null : <ProductFilter />}
-        </aside> */}
           {loading ? <Loader /> : (
             <ProductList products={products} />
           )}

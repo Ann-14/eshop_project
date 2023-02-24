@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { AiOutlineClose, AiOutlineMenu, AiOutlineShoppingCart, AiOutlineUser } from 'react-icons/ai'
+import { AiOutlineClose, AiOutlineMenu, AiOutlineUser } from 'react-icons/ai'
 
 import { auth } from '../firebase/config'
 import { onAuthStateChanged, signOut } from 'firebase/auth'

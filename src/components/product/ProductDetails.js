@@ -56,7 +56,7 @@ export const ProductDetails = () => {
     <>
       <section>
           <div className="btn">
-            <Link to='/home'>&larr; Back to products</Link>
+            <Link to='/productsPage'>&larr; Back to products</Link>
           </div>
           {product === null ? (
             <Loader />
