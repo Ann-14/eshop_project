@@ -15,13 +15,9 @@ import { CALCULATE_TOTAL_ITEMS, selectCartTotalQuantity } from '../redux/slice/c
 import { BasketIcon, PhotoIcon } from './UI'
 
 
-
-
-
-
 const Header = ({ theme, toggleTheme }) => {
 
-  const [nav, setNav] = useState(false)
+
   const [userName, setUserName] = useState('')
   const navigate = useNavigate()
   const dispatch = useDispatch()
@@ -61,9 +57,7 @@ const Header = ({ theme, toggleTheme }) => {
     });
   }, [dispatch, userName])
 
-  const handleNav = () => {
-    setNav(!nav)
-  }
+
   const handleLogout = () => {
     signOut(auth).then(() => {
       toast.success('Logout successful')
@@ -77,67 +71,59 @@ const Header = ({ theme, toggleTheme }) => {
 
   return (
     <>
-      <header className='flex justify-between items-center h-8 md:h-24 max-w-[1240px] ' >
-       
-        <PhotoIcon/>
-        
-          {/*----------- Middle links----------------- */}
-        <div className='font-semibold text-lg md:text-xl capitalize'>
-          <ul className='hidden md:flex gap-4'>
-            <AdminLink>
-              <Link to='/admin/home'>Admin</Link>
-            </AdminLink>
-            <Link to='/homePage'>Home</Link>
-            <Link to='/productsPage'>Services</Link>
-            <Link to='/contact'>Contact</Link>
-          </ul>
+      {/* <PhotoIcon/> */}
+      {/* TODO profile page */}
+      <div className="navbar bg-base-100">
+        <div className="navbar-start">
+          <div className="dropdown">
+            <label tabIndex={0} className="btn btn-ghost btn-circle">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
+            </label>
+            <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+              <AdminLink>
+                <Link to='/admin/home'>Admin</Link>
+              </AdminLink>
+              <Link to='/homePage'>Home</Link>
+              <Link to='/productsPage'>Services</Link>
+              <Link to='/contact'>Contact</Link>
+              <ShowOnLogin>
+                <button><AiOutlineUser /></button>
+              </ShowOnLogin>
+              <ShowOnLogout>
+                <Link to='/login'><button className='btn btn-sm '>Sign in</button></Link>
+              </ShowOnLogout>
+              <ShowOnLogin>
+                <Link to='/' onClick={handleLogout}>Logout</Link>
+              </ShowOnLogin>
+              <ShowOnLogin>
+                <button><AiOutlineUser /></button>
+              </ShowOnLogin>
+            </ul>
+          </div>
         </div>
-        {/* //--------------Right links------------- */}
-        <ul className='hidden md:flex gap-4'>
-          
-          {/* TODO profile page */}
-          <ShowOnLogin>
-            <button><AiOutlineUser /></button>
-          </ShowOnLogin>
-          <ShowOnLogin>
-            <Link to='/' onClick={handleLogout}>Logout </Link>
-          </ShowOnLogin>
-          
-          <Theme toggleTheme={toggleTheme} theme={theme} />
+        <div className="navbar-end">
           <ShowOnLogout>
             <Link to='/login'><button className='btn btn-sm '>Sign in</button></Link>
           </ShowOnLogout>
-          <Link to='/cart' className='flex'><BasketIcon /><p>{cartTotalQuantity}</p> </Link>
-        </ul>
-
-        {/* ---- MOBILE NAVBAR ---- */}
-        <div onClick={handleNav} className='block md:hidden'>
-          {nav ? <AiOutlineClose size={20} /> : <AiOutlineMenu size={20} />}
+          <ShowOnLogin>
+            <Link to='/' onClick={handleLogout}>Logout</Link>
+          </ShowOnLogin>
+          <button className="btn btn-ghost btn-circle">
+            <Theme toggleTheme={toggleTheme} theme={theme} />
+          </button>
+          <button className="btn btn-ghost btn-circle">
+            <div className="indicator">
+              <Link to='/cart'><BasketIcon /></Link>
+              <span className="badge badge-xs badge-primary indicator-item">{cartTotalQuantity}</span>
+            </div>
+          </button>
         </div>
-        <ul className={nav ? 'fixed left-0 top-0 w-[60%] h-full border-r border-r-gray-900 bg-[#000300] ease-in-out duration-500' : 'ease-in-out duration-500 fixed left-[-100%]'}>
-          <div>
-            <Link to='/'><h2 className='w-full text-3xl font-bold m-4'>The Colorsite</h2> </Link>
-          </div>
-          <div className='flex flex-col text-white '>
-            <AdminLink>
-              <Link to='/admin/home'>Admin</Link>
-            </AdminLink>
-            <Link to='/homePage'>Home</Link>
-            <Link to='/productsPage'>Products</Link>
-            <Link to='/contact'>Contact</Link>
-            <ShowOnLogout>
-              <Link to='/login'>Sign in</Link>
-            </ShowOnLogout>
-            <ShowOnLogin>
-              <button><AiOutlineUser></AiOutlineUser></button>
-            </ShowOnLogin>
-            <ShowOnLogin>
-              <Link to='/' onClick={handleLogout}>Logout </Link>
-            </ShowOnLogin>
-            <Link to='/cart'><BasketIcon/><p>{cartTotalQuantity}</p> </Link>
-          </div>
-        </ul>
-      </header>
+      </div>
+
+
+
+
+
     </>
   )
 }

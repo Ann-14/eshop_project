@@ -40,8 +40,8 @@ function App() {
               </AdminRoute>}>
               </Route>
           </Routes>
-          <Footer />
         </div>
+          <Footer />
       </BrowserRouter>
     </>
   );
