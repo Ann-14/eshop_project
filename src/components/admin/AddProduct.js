@@ -147,14 +147,14 @@ if(product.imageURL !== productToEdit.imageURL){
   return (
     <>
       {loading && <Loader />}
-      <div className="space-y-6 bg-black px-4 py-5 sm:p-6">
+      <div className="space-y-6 px-4 py-5 sm:p-6">
         <h2 className="text-white">{detectForm(id,'Add New Product', 'Edit product')}</h2>
-        <div className="md:grid md:grid-cols-3 md:gap-6">
+        <div className="">
           <form onSubmit={detectForm(id,addProduct,editProduct)}>
-            <div className="shadow sm:overflow-hidden sm:rounded-md">
-              <div className="space-y-6 bg-white px-4 py-5 sm:p-6">
+            <div className="shadow sm:overflow-hidden sm:rounded-md flex justify-center flex-col">
+              <div className=" space-y-6 sm:mx-12 md:mx-24 bg-red-300 px-4 py-5 ">
                 {/* Product Name */}
-                <div className="col-span-3 sm:col-span-2">
+                <div className="">
                   <label
                     htmlFor="productName"
                     className="block text-sm font-medium text-gray-700"
@@ -241,7 +241,7 @@ if(product.imageURL !== productToEdit.imageURL){
                       name="price"
                       onChange={(e) => handleInputChange(e)}
                       value={product.price}
-                      className="block w-full flex-1 rounded-none rounded-r-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                      className="block w-full flex-1 rounded-none rounded-r-md border-gray-300 sm:text-sm"
                       placeholder="Product price"
                     />
                   </div>
@@ -293,7 +293,7 @@ if(product.imageURL !== productToEdit.imageURL){
                       required
                       onChange={(e) => handleInputChange(e)}
                       value={product.description}
-                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm  sm:text-sm"
                       placeholder="product description"
                     />
                   </div>
@@ -303,10 +303,10 @@ if(product.imageURL !== productToEdit.imageURL){
                 </div>
               </div>
               {/* button */}
-              <div className="bg-gray-50 px-4 py-3 text-right sm:px-6">
+              <div className=" px-4 py-3 text-center sm:px-6">
                 <button
                   type="submit"
-                  className="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                  className="btn-base btn-primary inline-flex justify-center rounded-md border border-transparent  py-2 px-4 text-sm font-medium text-white  "
                 >
                   {detectForm(id, 'Add Product', 'Edit product')}
                 </button>

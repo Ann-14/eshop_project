@@ -5,7 +5,7 @@ import { SlSocialYoutube } from 'react-icons/sl';
 
 export const Contact = () => {
     return (
-        <section className="lg:flex">
+        <section className="lg:flex lg:justify-center">
             <div className="flex w-full flex-col justify-center p-8 lg:w-1/2  lg:px-12  xl:px-32">
                 <h1 className="text-3xl font-semibold capitalize  lg:text-5xl">Contact us.</h1>
                 <p className="mt-4  ">Ask us anything! We would love to hear from you.</p>

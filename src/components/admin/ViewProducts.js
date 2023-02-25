@@ -1,4 +1,4 @@
-import { deleteDoc, doc  } from "firebase/firestore"
+import { deleteDoc, doc } from "firebase/firestore"
 import { useEffect } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { toast } from "react-toastify"
@@ -25,7 +25,7 @@ export const ViewProducts = () => {
         products: data
       }),
     )
-  }, [dispatch,data])
+  }, [dispatch, data])
 
   const confirmDelete = (id, imageURL) => {
     Confirm.show(
@@ -60,14 +60,13 @@ export const ViewProducts = () => {
   return (
     <>
       {loading && <Loader />}
-      <div className="flex flex-col items-center justify-center min-h-screen ">
-        <h2>All Products</h2>
+      <div className="flex flex-col items-center  min-h-screen ">
         {products.length === 0 ? (
           <p>No products found</p>
         ) : (
-          <div className="col-span-12">
-            <div className="overflow-auto lg:overflow-visible ">
-              <table className="table text-gray-400 border-separate space-y-6 text-sm">
+          <div className="col-span-12 ">
+            <div className="overflow-auto lg:overflow-visible   border-4 border-slate-500 rounded">
+              <table className="table text-gray-400 border-separate space-y-6 text-sm shadow-lg">
                 <thead className="bg-gray-800 text-gray-500">
                   <tr>
                     <th className="p-3">Serial</th>
@@ -83,12 +82,12 @@ export const ViewProducts = () => {
                     const { id, name, price, imageURL, category } = product
                     return (
 
-                      <tr className="bg-gray-800" key={id}>
+                      <tr className="bg-gray-800 border border-black" key={id}>
                         <td>{index + 1}</td>
                         <td className="p-3">
                           <div className="flex align-items-center">
                             <img className="rounded-full h-12 w-12  object-cover" src={imageURL} alt={name} />
-                            <div className="ml-3">
+                            <div className="ml-3 flex justify-center items-center">
                               <div className="">{name}</div>
                             </div>
                           </div>
@@ -102,20 +101,17 @@ export const ViewProducts = () => {
                         <td className="p-3">
                           <span className="bg-green-400 text-gray-50 rounded-md px-2">available</span>
                         </td>
-                        <td className="p-3 ">
-                          <Link to={`/admin/add-product/${id}`} className="text-gray-400 hover:text-gray-100 mr-2"><FaEdit /></Link>
-                          <Link to='/admin/product' className="text-gray-400 hover:text-gray-100 mr-2"><FaTrashAlt onClick={() => confirmDelete(id, imageURL)} /></Link>
+                        <td className="p-3hover:text-gray-700 ">
+                          <Link to={`/admin/add-product/${id}`} className="hover:text-primary mr-2"><FaEdit /></Link>
+                          <Link to='/admin/product' className="  mr-2 hover:text-red-400"><FaTrashAlt onClick={() => confirmDelete(id, imageURL)} /></Link>
                         </td>
                       </tr>
-
                     )
                   })}
-
                 </tbody>
               </table>
             </div>
           </div>
-
         )}
       </div>
 

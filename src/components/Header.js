@@ -86,14 +86,12 @@ const Header = ({ theme, toggleTheme }) => {
               <Link to='/homePage'>Home</Link>
               <Link to='/productsPage'>Services</Link>
               <Link to='/contact'>Contact</Link>
-              <ShowOnLogin>
-                <button><AiOutlineUser /></button>
-              </ShowOnLogin>
+             
               <ShowOnLogout>
                 <Link to='/login'><button className='btn btn-sm '>Sign in</button></Link>
               </ShowOnLogout>
               <ShowOnLogin>
-                <Link to='/' onClick={handleLogout}>Logout</Link>
+                <Link to='/' onClick={handleLogout} className='btn btn-sm '>Logout</Link>
               </ShowOnLogin>
               <ShowOnLogin>
                 <button><AiOutlineUser /></button>
@@ -106,7 +104,7 @@ const Header = ({ theme, toggleTheme }) => {
             <Link to='/login'><button className='btn btn-sm '>Sign in</button></Link>
           </ShowOnLogout>
           <ShowOnLogin>
-            <Link to='/' onClick={handleLogout}>Logout</Link>
+            <Link to='/' onClick={handleLogout} className='btn btn-sm'>Logout</Link>
           </ShowOnLogin>
           <button className="btn btn-ghost btn-circle">
             <Theme toggleTheme={toggleTheme} theme={theme} />
