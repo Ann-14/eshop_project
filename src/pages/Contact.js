@@ -1,11 +1,11 @@
-import { SlSocialSpotify } from 'react-icons/sl';
+import { AiOutlineLinkedin } from 'react-icons/ai';
 import { SlSocialInstagram } from 'react-icons/sl';
 import { SlSocialGithub } from 'react-icons/sl';
 import { SlSocialYoutube } from 'react-icons/sl';
 
 export const Contact = () => {
     return (
-        <section className="lg:flex lg:justify-center">
+        <section className="lg:flex lg:justify-center overflow-hidden">
             <div className="flex w-full flex-col justify-center p-8 lg:w-1/2  lg:px-12  xl:px-32">
                 <h1 className="text-3xl font-semibold capitalize  lg:text-5xl">Contact us.</h1>
                 <p className="mt-4  ">Ask us anything! We would love to hear from you.</p>
@@ -16,9 +16,9 @@ export const Contact = () => {
                         {/* ------------Hero section links------------*/}
                         <section>
                             <ul className="flex list-none  gap-4 text-primary ">
-                                <li className=''><a href='https://www.instagram.com/starwars/' >< SlSocialInstagram size={30} /></a></li>
-                                <li className=''><a href='https://www.youtube.com/watch?v=4bpk2k1ug3M' >< SlSocialYoutube size={30} /></a></li>
-                                <li className=''><a href='https://open.spotify.com/playlist/37i9dQZF1DXaUaRhCgtpCo'>< SlSocialSpotify size={30} /></a> </li>
+                                <li className=''><a href='https://www.instagram.com/thecolorsite/' >< SlSocialInstagram size={30} /></a></li>
+                                <li className=''><a href='https://www.youtube.com/watch?v=stnfE1MmOQ8&list=PLpY8_gZL9Qda8gm9rKLh6Nw4J0MZsqEZD' >< SlSocialYoutube size={30} /></a></li>
+                                <li className=''><a href='https://www.linkedin.com/in/anabel-morillo-recuero-143374267/'>< AiOutlineLinkedin size={30} /></a> </li>
                                 <li className=''><a href='https://github.com/Ann-14' >< SlSocialGithub size={30} /></a></li>
                             </ul>
                         </section>
@@ -27,12 +27,12 @@ export const Contact = () => {
             </div>
             <div className="flex w-full flex-col justify-center p-8 lg:w-1/2 lg:px-12 xl:px-24 mt-0 lg:mt-8 mb-8 ">
                 <form>
-                    <div className="md:flex md:items-center ">
-                        <div className="mt-4 flex-1 px-2 md:mt-0">
+                    <div className="md:flex md:items-center gap-2 ">
+                        <div className="mt-4 flex-1 md:mt-0">
                             <input type="text" placeholder="John Doe" className="mt-2 block w-full rounded-md border border-gray-200  px-5 py-3 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring focus:ring-opacity-40" />
                         </div>
 
-                        <div className="mt-4 flex-1 px-2 md:mt-0">
+                        <div className="mt-4 flex-1 md:mt-0">
                             <input type="email" placeholder="johndoe@example.com" className="mt-2 block w-full rounded-md border border-gray-200  px-5 py-3 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring focus:ring-opacity-40" />
                         </div>
                     </div>

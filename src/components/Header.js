@@ -88,14 +88,12 @@ const Header = ({ theme, toggleTheme }) => {
               <Link to='/contact'>Contact</Link>
              
               <ShowOnLogout>
-                <Link to='/login'><button className='btn btn-sm '>Sign in</button></Link>
+                <Link to='/login'><button className='btn btn-sm mx-auto'>Sign in</button></Link>
               </ShowOnLogout>
               <ShowOnLogin>
-                <Link to='/' onClick={handleLogout} className='btn btn-sm '>Logout</Link>
+                <Link to='/' onClick={handleLogout} className='btn btn-sm mx-auto'>Logout</Link>
               </ShowOnLogin>
-              <ShowOnLogin>
-                <button><AiOutlineUser /></button>
-              </ShowOnLogin>
+              
             </ul>
           </div>
         </div>

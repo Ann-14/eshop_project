@@ -43,7 +43,7 @@ export const HomePage = () => {
         </div>
       */}
       {/* -------- PRODUCTS--------  */}
-      <div className=" mx-auto px-6 lg:pt-28 lg:pb-28 mb-14">
+      <div className=" mx-auto px-6 lg:pt-28 lg:pb-28 mb-6">
         <h1 className="text-3xl font-semibold  lg:text-4xl mb-4">Our Services</h1>
         <hr></hr>
         <div className="mt-8">
@@ -82,40 +82,6 @@ export const HomePage = () => {
                   </div>
                 </div>
               </Link>
-              <Link to='/productsPage'>
-                <div className="card bg-base-100 shadow-xl image-full ">
-                  <figure>
-                    <img src={imgGrid4} alt="Shoes" />
-                  </figure>
-                  <div className="card-body">
-                    <h2 className="card-title">Pet shots</h2>
-                    <p>If a dog chews shoes whose shoes does he choose?</p>
-                  </div>
-                </div>
-              </Link>
-              <Link to='/productsPage'>
-                <div className="card bg-base-100 shadow-xl image-full ">
-                  <figure>
-                    <img src={imgGrid4} alt="Shoes" />
-                  </figure>
-                  <div className="card-body">
-                    <h2 className="card-title">Pet shots</h2>
-                    <p>If a dog chews shoes whose shoes does he choose?</p>
-                  </div>
-                </div>
-              </Link>
-
-              <Link to='/productsPage'>
-                <div className="card bg-base-100 shadow-xl image-full ">
-                  <figure>
-                    <img src={imgGrid4} alt="Shoes" />
-                  </figure>
-                  <div className="card-body">
-                    <h2 className="card-title">Pet shots</h2>
-                    <p>If a dog chews shoes whose shoes does he choose?</p>
-                  </div>
-                </div>
-              </Link>
             </div>
             <div className="card-actions justify-end mt-12 mr-8 ">
               <button className="btn btn-primary ">See more<span className="mr-2"></span><lord-icon
@@ -129,7 +95,6 @@ export const HomePage = () => {
                 }}>
               </lord-icon> </button>
             </div>
-
           </div>
         </div>
       </div>

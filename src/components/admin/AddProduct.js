@@ -147,17 +147,18 @@ if(product.imageURL !== productToEdit.imageURL){
   return (
     <>
       {loading && <Loader />}
-      <div className="space-y-6 px-4 py-5 sm:p-6">
-        <h2 className="text-white">{detectForm(id,'Add New Product', 'Edit product')}</h2>
-        <div className="">
+      <div className="space-y-6 px-4 mb-14">
+        <div className="flex justify-center">
           <form onSubmit={detectForm(id,addProduct,editProduct)}>
-            <div className="shadow sm:overflow-hidden sm:rounded-md flex justify-center flex-col">
-              <div className=" space-y-6 sm:mx-12 md:mx-24 bg-red-300 px-4 py-5 ">
+        <h2 className="text-center font-semibold">{detectForm(id,'Add New Product', 'Edit product')}</h2>
+        <hr></hr>
+            <div className="shadow-2xl sm:overflow-hidden mt-4">
+              <div className=" space-y-6 px-4 py-5 sm:p-8">
                 {/* Product Name */}
                 <div className="">
                   <label
                     htmlFor="productName"
-                    className="block text-sm font-medium text-gray-700"
+                    className="block text-sm font-medium "
                   >
                     Product Name:
                   </label>
@@ -167,20 +168,20 @@ if(product.imageURL !== productToEdit.imageURL){
                       name="name"
                       value={product.name}
                       onChange={(e) => handleInputChange(e)}
-                      className="block w-full flex-1 rounded-none rounded-r-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                      className="block w-full flex-1 rounded-none rounded-r-md  sm:text-sm  border-2"
                       placeholder="Product name"
                     />
                   </div>
                 </div>
                 {/* Image Input */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700">
+                  <label className="block text-sm font-medium">
                     Product image
                   </label>
-                  <div className="mt-1 flex flex-col justify-center rounded-md border-2 border-dashed border-gray-300 px-6 pt-5 pb-6">
+                  <div className="mt-1 flex flex-col justify-center rounded-md border-2 border-dashed  px-6 pt-5 pb-6">
                     <div className="space-y-1 text-center">
                       <svg
-                        className="mx-auto h-12 w-12 text-gray-400"
+                        className="mx-auto h-12 w-12 "
                         stroke="currentColor"
                         fill="none"
                         viewBox="0 0 48 48"
@@ -193,7 +194,7 @@ if(product.imageURL !== productToEdit.imageURL){
                           strokeLinejoin="round"
                         />
                       </svg>
-                      <div className="flex flex-col text-sm text-gray-600">
+                      <div className="flex flex-col text-sm">
                         <label htmlFor="image">
                           <span>Upload a file</span>
                         </label>
@@ -224,6 +225,7 @@ if(product.imageURL !== productToEdit.imageURL){
                       value={product.imageURL}
                       disabled
                       placeholder="Image url"
+                      className="mt-8 w-10/12"
                     />
                   )}
                 </div>
@@ -231,18 +233,18 @@ if(product.imageURL !== productToEdit.imageURL){
                 <div className="col-span-3 sm:col-span-2">
                   <label
                     htmlFor="price"
-                    className="block text-sm font-medium text-gray-700"
+                    className="block text-sm font-medium"
                   >
                     Product Price:
                   </label>
-                  <div className="mt-1 flex rounded-md shadow-sm">
+                  <div className="mt-1 flex rounded-md shadow-sm border-2">
                     <input
                       type="number"
                       name="price"
                       onChange={(e) => handleInputChange(e)}
                       value={product.price}
                       className="block w-full flex-1 rounded-none rounded-r-md border-gray-300 sm:text-sm"
-                      placeholder="Product price"
+                      placeholder="Product price €"
                     />
                   </div>
                 </div>
@@ -250,7 +252,7 @@ if(product.imageURL !== productToEdit.imageURL){
                 <div className="col-span-3 sm:col-span-2">
                   <label
                     htmlFor="category"
-                    className="block text-sm font-medium text-gray-700"
+                    className="block text-sm font-medium"
                   >
                     Product Categories:
                   </label>
@@ -259,7 +261,7 @@ if(product.imageURL !== productToEdit.imageURL){
                     name="category"
                     value={product.category}
                     onChange={(e) => handleInputChange(e)}
-                    className="text-sm font-medium text-gray-700"
+                    className="text-sm font-medium border-2"
                   >
                     <option value="" disabled>
                       --choose product category--
@@ -269,7 +271,7 @@ if(product.imageURL !== productToEdit.imageURL){
                         <option
                           key={category.id}
                           value={category.name}
-                          className="text-sm font-medium text-gray-700"
+                          className="text-sm font-medium "
                         >
                           {category.name}
                         </option>
@@ -281,7 +283,7 @@ if(product.imageURL !== productToEdit.imageURL){
                 <div>
                   <label
                     htmlFor="description"
-                    className="block text-sm font-medium text-gray-700"
+                    className="block text-sm font-medium"
                   >
                     Product description
                   </label>
@@ -293,20 +295,20 @@ if(product.imageURL !== productToEdit.imageURL){
                       required
                       onChange={(e) => handleInputChange(e)}
                       value={product.description}
-                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm  sm:text-sm"
+                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm sm:text-sm  border-2"
                       placeholder="product description"
                     />
                   </div>
-                  <p className="mt-2 text-sm text-gray-500">
+                  <p className="mt-2 text-sm ">
                     Brief description for your product.
                   </p>
                 </div>
               </div>
               {/* button */}
-              <div className=" px-4 py-3 text-center sm:px-6">
+              <div className="px-4 py-3 text-center sm:px-6 mb-6">
                 <button
                   type="submit"
-                  className="btn-base btn-primary inline-flex justify-center rounded-md border border-transparent  py-2 px-4 text-sm font-medium text-white  "
+                  className="btn-base btn-primary inline-flex justify-center rounded-md border border-transparent  py-2 px-4 text-sm font-medium text-white "
                 >
                   {detectForm(id, 'Add Product', 'Edit product')}
                 </button>
