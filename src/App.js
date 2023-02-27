@@ -12,6 +12,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Cart } from './pages/Cart';
 import { ScrollToTop } from './components/UI/ScrollToTop';
+import { Checkout } from './pages/checkout/Checkout';
 
 
 
@@ -31,6 +32,7 @@ function App() {
             <Route path='/homePage' element={<HomePage />}></Route>
             <Route path='/product-details/:id' element={<ProductDetails />}></Route>
             <Route path='/cart' element={<Cart />}></Route>
+            <Route path='/checkout-details' element={<Checkout />}></Route>
             {/* ---- Auth Pages --- */}
             <Route path='/signup' element={<SignUp />}></Route>
             <Route path='/resetpassword' element={<ResetPassword />}></Route>

@@ -1,8 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
-import { ADD_TO_CART, CALCULATE_TOTAL, CALCULATE_TOTAL_ITEMS, DECREASE_CART, REMOVE_FROM_CART, selectCartItems, selectCartTotalPrice, selectCartTotalQuantity } from '../redux/slice/cartSlice'
+import { Link, useNavigate } from 'react-router-dom'
+import { ADD_TO_CART, CALCULATE_TOTAL, CALCULATE_TOTAL_ITEMS, DECREASE_CART, REMOVE_FROM_CART, SAVE_URL, selectCartItems, selectCartTotalPrice, selectCartTotalQuantity } from '../redux/slice/cartSlice'
 import {FaTrashAlt} from 'react-icons/fa'
 import { useEffect } from 'react'
+import { selectIsLoggedIn } from '../redux/slice/authSlice'
 
 
 
@@ -11,7 +12,9 @@ export const Cart = () => {
 const cartItems = useSelector(selectCartItems)
 const cartTotalQuantity = useSelector(selectCartTotalQuantity)
 const cartTotalPrice = useSelector(selectCartTotalPrice)
+const isLoggedIn = useSelector(selectIsLoggedIn)
 const dispatch = useDispatch()
+const navigate = useNavigate()
 
 const increaseCart = (product) =>{
   dispatch(ADD_TO_CART(product))
@@ -28,8 +31,20 @@ const removeProduct = (product) =>{
 useEffect(() => {
  dispatch(CALCULATE_TOTAL()) 
  dispatch(CALCULATE_TOTAL_ITEMS())
+ dispatch(SAVE_URL(''))
 
 }, [dispatch,cartItems])
+
+const url = window.location.href
+
+const checkOut = () => {
+if (isLoggedIn){
+  navigate('/checkout-details')
+}else{
+  dispatch(SAVE_URL(url))
+  navigate('/login')
+}
+}
 
   return (
    <section className='lg:flex lg:justify-center'>
@@ -94,10 +109,9 @@ return(
           <p className="text-lg font-bold">Total</p>
           <div className="">
             <p className="mb-1 text-lg font-bold">{`${cartTotalPrice.toFixed(2)}`}€</p>
-           
           </div>
         </div>
-        <button className=" btn btn-primary mt-6 w-full rounded-md py-1.5 font-medium ">Check out</button>
+        <button className="btn btn-primary mt-6 w-full rounded-md py-1.5 font-medium" onClick={checkOut}>Check out</button>
       </div>
 
 </div>

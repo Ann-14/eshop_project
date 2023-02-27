@@ -8,13 +8,22 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Loader } from '../../components/Loader';
 import Spline from '@splinetool/react-spline';
+import { useSelector } from 'react-redux';
+import { selectPreviousURL } from '../../redux/slice/cartSlice';
 
 export const Login = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
-  
+  const prreviousURL = useSelector(selectPreviousURL)
   const navigate = useNavigate();
+
+const redirectUser = () => {
+  if(prreviousURL.includes('cart')){
+    return navigate('/cart')
+  }
+  navigate('/')
+}
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -26,7 +35,8 @@ export const Login = () => {
       console.log(user)
       setLoading(false)
       toast.success('Login successful')
-      navigate('/')
+      // navigate('/')
+      redirectUser()
     })
     .catch((error) => {
       setLoading(false)
@@ -42,7 +52,8 @@ const provider = new GoogleAuthProvider();
     const user = result.user;
     console.log(user)
    toast.success('Login successful')
-   navigate('/')
+  //  navigate('/')
+   redirectUser()
   }).catch((error) => {
     toast.error(error.message)
   });
