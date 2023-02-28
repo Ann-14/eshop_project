@@ -4,7 +4,7 @@ import { FILTER_BY_CATEGORY,  } from "../../../redux/slice/filterSlice"
 import {  selectProducts } from "../../../redux/slice/productSlice"
 
 
-export const CategoryFilter= () => {
+export const CategoryFilter = () => {
     const dispatch = useDispatch()
     const products = useSelector(selectProducts)
  

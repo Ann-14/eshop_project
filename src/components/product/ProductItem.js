@@ -19,13 +19,16 @@ export const ProductItem = ({ product, id, name, price, description, imageURL })
         </Link>
         <div className="card-body  ">
           <h2 className="card-title">{name}</h2>
-
-          <p>If a dog chews shoes whose shoes does he choose?</p>
-          <div className="card-actions justify-end">
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sit.</p>
+          
+            
+          <div className="card-actions justify-between">
+            <h2 className="font-semibold text-lg">{price}€</h2>
             <Link to={`/product-details/${id}`}>
               <button className="btn-sm btn-primary">See More</button>
             </Link>
           </div>
+          
         </div>
         </div>
       

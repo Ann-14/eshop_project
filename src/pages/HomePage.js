@@ -1,7 +1,11 @@
 import { ElfsightWidget } from "react-elfsight-widget";
 import { Contact } from "./Contact";
 import { Link } from "react-router-dom";
-import imgGrid4 from '../assets/brad-starkey-rrCsh37KY5I-unsplash.jpg'
+import heroImg from '../assets/heroImg.jpg'
+import dogImg from '../assets/dogduck.jpg'
+import newbornImg from '../assets/newbornImg.jpg'
+import corporateImg from '../assets/corporateImg.jpg'
+
 
 
 export const HomePage = () => {
@@ -11,9 +15,8 @@ export const HomePage = () => {
       
 {/* SM SCREEN */}
       <div className="flex h-screen ">
-
         <div className="lg:hidden relative overflow-hidden flex justify-center rounded-md items-center w-full mt-10 mb-24 ">
-          <img src={imgGrid4} alt='grid4' className="object-cover w-full h-full opacity-40" />
+          <img src={heroImg} alt='grid4' className="object-cover w-full h-full opacity-40" />
           <div className="absolute w-full text-lg flex flex-col justify-center gap-8">
             <h2 className="text-6xl font-semibold ">The <span className="text-primary">Color</span>site</h2>
             <h2 className="font-semibold text-4xl">We don't trust words.<br></br> We trust pictures.</h2>
@@ -43,7 +46,7 @@ export const HomePage = () => {
         </div>
         <div className="lg:mt-36 xl:mt-8 lg:py-18 xl:pb-14 hidden lg:flex lg:justify-center md:w-1/2" style={{ clipPath: 'polygon(10% 0, 100% 0%, 100% 100%, 0 100%)' }}>
           <div className="h-full object-cover   " >
-            <img src={imgGrid4} alt='grid4' className="" />
+            <img src={heroImg} alt='grid4' className="" />
           </div>
         </div>
       </div>
@@ -57,38 +60,36 @@ export const HomePage = () => {
           <div className="mt-8 flex-1 lg:mx-12 lg:mt-0">
             <div className=" grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3">
               <Link to='/productsPage'>
-                <div className="card bg-base-100 shadow-xl image-full ">
+                <div className="relative flex opacity-60 hover:opacity-80  ">
                   <figure>
-                    <img src={imgGrid4} alt="Shoes" />
+                    <img src={dogImg} alt="Shoes" className="object-cover rounded-lg"/>
                   </figure>
-                  <div className="card-body">
-                    <h2 className="card-title">Pet shots</h2>
-                    <p>If a dog chews shoes whose shoes does he choose?</p>
+                  <div className="absolute">
+                    <h2 className="text-xl text-white card-title p-6">Pet photoshoot</h2>
                   </div>
                 </div>
               </Link>
               <Link to='/productsPage'>
-                <div className="card bg-base-100 shadow-xl image-full ">
+                <div className="relative flex opacity-60 hover:opacity-80  ">
                   <figure>
-                    <img src={imgGrid4} alt="Shoes" />
+                    <img src={corporateImg} alt="Shoes" className="object-cover rounded-lg"/>
                   </figure>
-                  <div className="card-body">
-                    <h2 className="card-title">Pet shots</h2>
-                    <p>If a dog chews shoes whose shoes does he choose?</p>
+                  <div className="absolute">
+                    <h2 className="text-xl text-white card-title p-6">corporate photoshoot</h2>
                   </div>
                 </div>
               </Link>
               <Link to='/productsPage'>
-                <div className="card bg-base-100 shadow-xl image-full ">
+                <div className="relative flex opacity-60 hover:opacity-80  ">
                   <figure>
-                    <img src={imgGrid4} alt="Shoes" />
+                    <img src={newbornImg} alt="Shoes" className="object-cover rounded-lg"/>
                   </figure>
-                  <div className="card-body">
-                    <h2 className="card-title">Pet shots</h2>
-                    <p>If a dog chews shoes whose shoes does he choose?</p>
+                  <div className="absolute">
+                    <h2 className="text-xl text-white card-title p-6">Newborn sessions</h2>
                   </div>
                 </div>
               </Link>
+              
             </div>
             <div className="card-actions justify-end mt-10 mr-8 ">
             <Link to='/productsPage'>
