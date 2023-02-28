@@ -8,13 +8,30 @@ export const HomePage = () => {
   return (
     <main>
       {/* -----HERO--------- */}
+{/* SM SCREEN */}
+      <div className="flex h-screen ">
 
-      <div className="flex h-screen  md:p-20">
-        <div className="flex items-center justify-center text-center lg:text-left lg:w-1/2 md:bg-transparent ">
-          <div className="flex flex-col gap-4 ">
-            <h2 className="text-5xl font-semibold title-font">The <span className="text-primary">Color</span>site</h2>
+        <div class="lg:hidden relative overflow-hidden flex justify-center rounded-md items-center w-full mt-10 mb-24 ">
+          <img src={imgGrid4} alt='grid4' className="object-cover w-full h-full opacity-40" />
+          <div class="absolute w-full text-lg flex flex-col justify-center gap-8">
+            <h2 className="text-6xl font-semibold ">The <span className="text-primary">Color</span>site</h2>
+            <h2 className="font-semibold text-4xl">We don't trust words.<br></br> We trust pictures.</h2>
+            <p className="mt-2 mx-auto text-base font-semibold max-w-sm">Lorem fugit harum id necessitatibus odio quam quasi, quibusdam rem tempora voluptates. <br></br> Cumque debitis dignissimos id quam vel!</p>
+            <div className="flex justify-center mt-6 gap-3">
+              <Link to='/productsPage'>
+                <button className="btn btn-primary">Get Started</button></Link>
+              <Link to='/contact'>
+                <button className="btn">Learn more</button></Link>
+            </div>
+          </div>
+        </div>
+
+{/* APPEARS ON LG SCREEN */}
+        <div className="hidden lg:flex lg:items-center lg:justify-center text-center lg:text-left lg:w-1/2 md:bg-transparent ">
+          <div className="flex flex-col gap-4">
+            <h2 className="text-5xl font-semibold ">The <span className="text-primary">Color</span>site</h2>
             <h2 className="font-semibold text-3xl">We don't trust words.<br></br> We trust pictures.</h2>
-            <p className="mt-2 text-sm md:text-base">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis commodi cum cupiditate ducimus, fugit harum id necessitatibus odio quam quasi, quibusdam rem tempora voluptates. Cumque debitis dignissimos id quam vel!</p>
+            <p className="mt-2 text-sm md:text-base lg:max-w-md">Lorem fugit harum id necessitatibus odio quam quasi, quibusdam rem tempora voluptates. Cumque debitis dignissimos id quam vel!</p>
             <div className="flex justify-center lg:justify-start mt-6 gap-3">
               <Link to='/productsPage'>
                 <button className="btn btn-primary">Get Started</button></Link>
@@ -23,28 +40,17 @@ export const HomePage = () => {
             </div>
           </div>
         </div>
-        <div className=" hidden lg:block md:w-1/2" style={{ clipPath: 'polygon(10% 0, 100% 0%, 100% 100%, 0 100%)' }}>
+        <div className=" hidden lg:flex lg:justify-center md:w-1/2" style={{ clipPath: 'polygon(10% 0, 100% 0%, 100% 100%, 0 100%)' }}>
           <div className="h-full object-cover   " >
-            <img src={imgGrid4} alt='grid4' />
-            {/* <Spline scene="https://prod.spline.design/sNuLt3pE0Cm3QWA5/scene.splinecode" /> */}
+            <img src={imgGrid4} alt='grid4' className="mt-24 xl:mt-4" />
           </div>
         </div>
       </div>
 
-      {/* MOBILE 3d */}
-      {/* <div className="flex h-screen md:hidden ">
-      <div className="md:hidden mx-4 h-3/4" >
-        
-          <div className="h-3/4 object-cover " >
-          <Spline scene="https://prod.spline.design/0VehDCnTN08Pe-af/scene.splinecode" />
-            
-          </div>
-        </div>
-        </div>
-      */}
+     
       {/* -------- PRODUCTS--------  */}
       <div className=" mx-auto px-6 lg:pt-28 lg:pb-28 mb-6">
-        <h1 className="text-3xl font-semibold  lg:text-4xl mb-4">Our Services</h1>
+        <h1 className="text-3xl lg:text-4xl font-semibold  mb-4">Our Services</h1>
         <hr></hr>
         <div className="mt-8">
           <div className="mt-8 flex-1 lg:mx-12 lg:mt-0">
@@ -83,7 +89,8 @@ export const HomePage = () => {
                 </div>
               </Link>
             </div>
-            <div className="card-actions justify-end mt-12 mr-8 ">
+            <div className="card-actions justify-end mt-10 mr-8 ">
+            <Link to='/productsPage'>
               <button className="btn btn-primary ">See more<span className="mr-2"></span><lord-icon
                 src="https://cdn.lordicon.com/zmkotitn.json"
                 trigger="hover"
@@ -94,13 +101,13 @@ export const HomePage = () => {
                   height: "30px"
                 }}>
               </lord-icon> </button>
+              </Link>
             </div>
           </div>
         </div>
       </div>
-
       {/* -------INSTAGRAM---------*/}
-      <div className="">
+      <div className="mt-20">
         <ElfsightWidget widgetID="b3fa5855-a303-4d1d-8b80-ec7549dbd130" />
       </div>
 
