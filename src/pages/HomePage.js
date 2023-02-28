@@ -8,12 +8,13 @@ export const HomePage = () => {
   return (
     <main>
       {/* -----HERO--------- */}
+      
 {/* SM SCREEN */}
       <div className="flex h-screen ">
 
-        <div class="lg:hidden relative overflow-hidden flex justify-center rounded-md items-center w-full mt-10 mb-24 ">
+        <div className="lg:hidden relative overflow-hidden flex justify-center rounded-md items-center w-full mt-10 mb-24 ">
           <img src={imgGrid4} alt='grid4' className="object-cover w-full h-full opacity-40" />
-          <div class="absolute w-full text-lg flex flex-col justify-center gap-8">
+          <div className="absolute w-full text-lg flex flex-col justify-center gap-8">
             <h2 className="text-6xl font-semibold ">The <span className="text-primary">Color</span>site</h2>
             <h2 className="font-semibold text-4xl">We don't trust words.<br></br> We trust pictures.</h2>
             <p className="mt-2 mx-auto text-base font-semibold max-w-sm">Lorem fugit harum id necessitatibus odio quam quasi, quibusdam rem tempora voluptates. <br></br> Cumque debitis dignissimos id quam vel!</p>
@@ -40,9 +41,9 @@ export const HomePage = () => {
             </div>
           </div>
         </div>
-        <div className=" hidden lg:flex lg:justify-center md:w-1/2" style={{ clipPath: 'polygon(10% 0, 100% 0%, 100% 100%, 0 100%)' }}>
+        <div className="lg:mt-36 xl:mt-8 lg:py-18 xl:pb-14 hidden lg:flex lg:justify-center md:w-1/2" style={{ clipPath: 'polygon(10% 0, 100% 0%, 100% 100%, 0 100%)' }}>
           <div className="h-full object-cover   " >
-            <img src={imgGrid4} alt='grid4' className="mt-24 xl:mt-4" />
+            <img src={imgGrid4} alt='grid4' className="" />
           </div>
         </div>
       </div>
