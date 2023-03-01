@@ -1,17 +1,13 @@
 
 import React, { useState } from 'react'
-
 import { Link, useNavigate } from 'react-router-dom'
 import { auth } from '../../firebase/config'
 import { GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Loader } from '../../components/Loader';
-import Spline from '@splinetool/react-spline';
 import { useSelector } from 'react-redux';
 import { selectPreviousURL } from '../../redux/slice/cartSlice';
-import heroImg from '../../assets/heroImg.jpg'
-import brick from '../../assets/brick-wall.svg'
 
 export const Login = () => {
   const [email, setEmail] = useState('')
@@ -62,10 +58,11 @@ const provider = new GoogleAuthProvider();
  }
   return (
     <>
+    
     {loading && <Loader/>}
     <ToastContainer/>
         {/* ---Log in Form Wrapper--- */}
-        <div className="flex  " >
+        <div className="flex">
           <div className="my-auto mx-auto  flex flex-col justify-center   ">
             <h1 className="text-4xl font-medium mt-16 md:mt-0">Login</h1>
             <p className="mt-2">Hi, Welcome back 👋</p>
@@ -97,19 +94,14 @@ const provider = new GoogleAuthProvider();
                   </svg>
                   <span>Login</span>
                 </button>
-                <p className="text-center"> Need an account? <Link to='/signup' className='underline mt-24 hover:text-primary'>Sign up</Link></p>
+                <p className="text-center"> Need an account? <Link to='/signup' className='underline mt-24 hover:text-primary'>Sign up!</Link></p>
               </div>
             </form>
-            <div className=''>
-     <div class="wave "></div>
-     <div class="wave"></div>
-     <div class="wave"></div>
-        </div>
+            <div className="wave "></div>
+            <div className="wave "></div>
+            <div className="wave "></div>
           </div>
         </div>
-       
-        
-        {/* </div> */}
     </>
   )
 }

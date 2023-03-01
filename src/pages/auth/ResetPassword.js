@@ -29,39 +29,39 @@ export const ResetPassword = () => {
   return (
     <>
       {loading && <Loader />}
-      <section className="flex flex-col md:flex-row">
+      
         {/* ---Log in Form Wrapper--- */}
-        <div className="flex  " >
-          <div className="my-auto mx-auto  flex flex-col justify-center   ">
+        <div className="flex justify-center mt-24" >
+          <div className="my-auto mx-auto flex flex-col justify-center">
             <h1 className="text-4xl font-medium">Password Reset</h1>
             <div className="my-5">
-              <button className="w-full text-center py-3 my-3 border flex space-x-2 items-center justify-center border-slate-200 rounded-lg  text-slate-200 hover:border-yellow-500 hover:shadow transition duration-150">
+              <button className="w-full text-center py-3 my-3 border flex space-x-2 items-center justify-center border-slate-200 rounded-lg   hover:border-yellow-500 hover:shadow transition duration-150">
                 <img
                   src="https://www.svgrepo.com/show/355037/google.svg"
-                  className="w-6 h-6 text-slate-200"
+                  className="w-6 h-6 "
                   alt=""
-                />{" "}
+                />
                 <span>Login with Google</span>
               </button>
             </div>
             <form onSubmit={handleSubmit}>
               <div className="flex flex-col space-y-5">
                 <label htmlFor="email">
-                  <p className="font-medium  pb-2 text-slate-200">
+                  <p className="font-medium  pb-2 ">
                     Email address
                   </p>
                   <input
                     id="email"
                     name="email"
                     type="email"
-                    className="w-full py-3 border border-slate-200 rounded-lg px-3 focus:outline-none focus:border-slate-500 hover:shadow text-black"
+                    className="w-full py-3 border border-slate-200 rounded-lg px-3 focus:outline-none focus:border-slate-500 hover:shadow "
                     placeholder="Enter email address"
                     onChange={(e) => setEmail(e.target.value)}
                   />
                 </label>
-                <div className="flex gap-4">
+                <div className="flex flex-col gap-4">
                   <button
-                    className="w-full py-3 font-medium text-white bg-indigo-600 hover:bg-indigo-500 rounded-lg border-indigo-500 hover:shadow inline-flex space-x-2 items-center justify-center"
+                    className="w-full btn btn-primary "
                     disabled={loading}
                     type="submit"
                   >
@@ -81,30 +81,22 @@ export const ResetPassword = () => {
                       />
                     </svg>
                   </button>
-                  <p className="text-center">
-                    {" "}
-                    Need an account?{" "}
+                  <div className="text-center flex justify-center mt-3">
+                    Need an account?
                     <Link to="/signup" className="hover:underline ">
-                      Sign up
+                    <span className="ml-2 underline hover:text-primary">Sign up!</span> 
                     </Link>
-                  </p>
+                  </div>
                 </div>
               </div>
             </form>
-            <div className="">
-              <div class="wave "></div>
-              <div class="wave"></div>
-              <div class="wave"></div>
-            </div>
+            
+              <div className="wave "></div>
+              <div className="wave"></div>
+              <div className="wave"></div>
+           
           </div>
         </div>
-        {/* we hide img on small screen */}
-        <img
-          src="https://images.pexels.com/photos/2523959/pexels-photo-2523959.jpeg"
-          alt="bg"
-          className="hidden md:flex h-screen md:w-1/2"
-        />
-      </section>
     </>
   );
 };

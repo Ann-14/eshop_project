@@ -69,6 +69,11 @@ const Header = ({ theme, toggleTheme }) => {
 
   }
 
+  const handleClick = () => {
+    const elem = document.activeElement;
+    elem?.blur();
+  };
+
   return (
     <>
       {/* <PhotoIcon/> */}
@@ -81,14 +86,14 @@ const Header = ({ theme, toggleTheme }) => {
             </label>
             <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
               <AdminLink>
-                <Link to='/admin/home'>Admin</Link>
+                <Link to='/admin/products' onClick={handleClick}>Admin</Link>
               </AdminLink>
-              <Link to='/homePage'>Home</Link>
-              <Link to='/productsPage'>Services</Link>
-              <Link to='/contact'>Contact</Link>
+              <Link to='/homePage'onClick={handleClick}>Home</Link>
+              <Link to='/productsPage' onClick={handleClick}>Services</Link>
+              <Link to='/contact' onClick={handleClick}>Contact</Link>
              
               <ShowOnLogout>
-                <Link to='/login'><button className='btn btn-sm mx-auto'>Sign in</button></Link>
+                <Link to='/login'onClick={handleClick}><button className='btn btn-sm mx-auto'>Sign in</button></Link>
               </ShowOnLogout>
               <ShowOnLogin>
                 <Link to='/' onClick={handleLogout} className='btn btn-sm mx-auto'>Logout</Link>

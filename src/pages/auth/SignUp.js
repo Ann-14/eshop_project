@@ -27,7 +27,7 @@ export const SignUp = () => {
         console.log(user);
         setLoading(false);
         toast.success("Registration successful...");
-        navigate("/login");
+        navigate("/");
       })
       .catch((error) => {
         toast.error(error.message);
@@ -127,24 +127,19 @@ export const SignUp = () => {
                       />
                     </svg>
                   </button>
-                  <p className="text-center flex justify-center">
-                    {" "}
-                    Already have an account?
-                   <p className="flex flex-col ml-1">
+                  <p className="text-center flex justify-center mt-3">
+                 Already have an account?
                     <Link to="/login" className="underline hover:text-primary">
-                      {" "}
-                  
-                      Log In!
+                    <span className="ml-2">Log In!</span> 
                     </Link>
-                    </p>
                   </p>
                 </div>
               </div>
             </form>
-            <div className="">
-              <div class="wave "></div>
-              <div class="wave"></div>
-              <div class="wave"></div>
+            <div>
+              <div className="wave "></div>
+              <div className="wave"></div>
+              <div className="wave"></div>
             </div>
           </div>
         </div>

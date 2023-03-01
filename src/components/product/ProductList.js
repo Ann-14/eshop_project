@@ -10,8 +10,6 @@ import { CategoryFilter } from "./Filters/CategoryFilter"
 import { PriceFilter } from "./Filters/PriceFilter"
 // import { ClearAll } from "./Filters/ClearAll"
 
-
-
 export const ProductList = ({ products }) => {
   const [search, setSearch] = useState('')
   const filteredProducts = useSelector(selectFilteredProducts)
@@ -52,12 +50,10 @@ export const ProductList = ({ products }) => {
             </div> */}
           </div>
         </div>
-
         {/* <!-- Mobile menu, show/hide based on menu state. --> */}
         <div className="sm:hidden md:visible" id="mobile-menu">
           {/* <a href="/#" className="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium" aria-current="page">Products Filter</a> */}
           <div className=" flex flex-col items-center w-auto px-2 pt-2 pb-3 gap-2">
-            {/* <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" --> */}
             <Search />
             <div className="flex ">
               <Sort className='px-3 py-2 rounded-md text-sm font-medium  ' />
@@ -74,9 +70,8 @@ export const ProductList = ({ products }) => {
           </div>
         </div>
       </nav>
-
       {/* ------Images Section-------- */}
-      <div className=" grid grid-col-1 md:grid-cols-2 lg:grid-cols-3 gap-4 ">
+      <div className=" grid grid-col-1 md:grid-cols-2 lg:grid-cols-3 gap-2 ">
         {products.length === 0 ? (
           <p>No products found</p>
         ) :
@@ -85,13 +80,11 @@ export const ProductList = ({ products }) => {
               return (
                 <div key={product.id} className='flex justify-center items-center'>
                   <ProductItem product={product} {...product} />
-                  
                 </div>
               )
             })
           )}
       </div>
-
       {/* ------Pagination-------- */}
       <div className="flex justify-center mt-24 mb-8 items-center">
         <Pagination

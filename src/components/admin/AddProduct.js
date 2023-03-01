@@ -147,12 +147,12 @@ if(product.imageURL !== productToEdit.imageURL){
   return (
     <>
       {loading && <Loader />}
-      <div className="space-y-6 px-4 mb-14">
-        <div className="flex justify-center">
-          <form onSubmit={detectForm(id,addProduct,editProduct)}>
+      <div className="space-y-6 px-4 mb-14 ">
+        <div className="flex justify-center ">
+          <form onSubmit={detectForm(id,addProduct,editProduct)} className=''>
         <h2 className="text-center font-semibold">{detectForm(id,'Add New Product', 'Edit product')}</h2>
         <hr></hr>
-            <div className="shadow-2xl sm:overflow-hidden mt-4">
+            <div className="shadow-2xl sm:overflow-hidden mt-4 border rounded-lg">
               <div className=" space-y-6 px-4 py-5 sm:p-8">
                 {/* Product Name */}
                 <div className="">
@@ -316,7 +316,8 @@ if(product.imageURL !== productToEdit.imageURL){
             </div>
           </form>
         </div>
-      </div>
+        </div>
+     
     </>
   );
 };
