@@ -85,6 +85,7 @@ export const ProductList = ({ products }) => {
               return (
                 <div key={product.id} className='flex justify-center items-center'>
                   <ProductItem product={product} {...product} />
+                  
                 </div>
               )
             })

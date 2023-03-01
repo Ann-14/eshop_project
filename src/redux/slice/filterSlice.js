@@ -49,7 +49,6 @@ const filterSlice = createSlice({
        
         FILTER_BY_CATEGORY(state,action){
             const {products,category} = action.payload
-            
             const productsCopy = [...products]
             let tempProducts = productsCopy
             

@@ -18,11 +18,17 @@ export const CategoryFilter = () => {
         setCategory(cat)
         dispatch(FILTER_BY_CATEGORY({
           products, category: cat
+         
         }))
+        // const result = products.map((prod) => prod.category === cat)
+      
+        // console.log(result)
       }
     return (
         <select value={category} onChange={e => filterProducts(e.target.value)} className='select select-primary select-sm w-full max-w-xs'>
           {allCategories.map((cat, index) => {
+            
+
             return <option key={index}>{cat}</option>;
           })}
         </select>

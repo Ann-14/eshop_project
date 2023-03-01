@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 import { ADD_TO_CART, CALCULATE_TOTAL_ITEMS } from "../../redux/slice/cartSlice"
 
 
-export const ProductItem = ({ product, id, name, price, description, imageURL }) => {
+export const ProductItem = ({ product, id, name, price, description, imageURL,category }) => {
   // const dispatch = useDispatch()
 
   // const addToCart = (product) => {
@@ -24,6 +24,7 @@ export const ProductItem = ({ product, id, name, price, description, imageURL })
             
           <div className="card-actions justify-between">
             <h2 className="font-semibold text-lg">{price}€</h2>
+            <h2>{category}</h2>
             <Link to={`/product-details/${id}`}>
               <button className="btn-sm btn-primary">See More</button>
             </Link>

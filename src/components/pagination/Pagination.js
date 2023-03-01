@@ -13,9 +13,7 @@ export const Pagination = ({
   const [maxPageNumberLimit, setMaxPageNumberLimit] = useState(5);
   const [minPageNumberLimit, setMinPageNumberLimit] = useState(0);
 
-  for (let i = 1; i <= Math.ceil(totalProducts / productsPerPage); i++) {
-    numberOfPages.push(i);
-  }
+  
 
   //Select page
   const selectPage = (pageNumber) => {
@@ -41,6 +39,10 @@ export const Pagination = ({
       setMinPageNumberLimit(minPageNumberLimit - pageNumberLimit)
     }
   };
+  
+  for (let i = 1; i <= Math.ceil(totalProducts / productsPerPage); i++) {
+    numberOfPages.push(i);
+  }
 
   return (
     <>

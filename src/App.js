@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import {HashRouter, Route, Routes } from 'react-router-dom';
 //Auth Pages
 import { HomePage, Contact,Admin,Login,SignUp, ProductsPage } from './pages/';
 
@@ -19,7 +19,7 @@ import { Checkout } from './pages/checkout/Checkout';
 function App() {
   return (
     <>
-      <BrowserRouter>
+      <HashRouter>
         <div className='min-h-screen container mx-auto pt-4 text-center body-font font-poppins'>
           <ToastContainer />
           <Header />
@@ -44,7 +44,7 @@ function App() {
           </Routes>
         </div>
           <Footer />
-      </BrowserRouter>
+      </HashRouter>
     </>
   );
 }

@@ -18,8 +18,6 @@ export const Admin = () => {
           <Route path='products' element={<ViewProducts></ViewProducts>}/>
           <Route path='add-product/:id' element={<AddProduct/>}/>
           <Route path='orders' element={< Orders/>}/>
-
-          
         </Routes>
       </div>
     </div>
