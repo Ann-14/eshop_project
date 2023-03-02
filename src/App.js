@@ -1,57 +1,51 @@
 import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
 import './App.css';
+import {HashRouter, Route, Routes } from 'react-router-dom';
+//Auth Pages
+import { HomePage, Contact,Admin,Login,SignUp, ProductsPage } from './pages/';
+
+//Components
+import { Header, Footer, ResetPassword, AdminRoute,ProductDetails } from './components';
+
+
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { Cart } from './pages/Cart';
+import { ScrollToTop } from './components/UI/ScrollToTop';
+import { Checkout } from './pages/checkout/Checkout';
+
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
-    </div>
+    <>
+      <HashRouter>
+        <div className='min-h-screen container mx-auto pt-4 text-center body-font font-poppins'>
+          <ToastContainer />
+          <Header />
+          <ScrollToTop />
+          <Routes>
+            <Route path='/' element={<HomePage />}></Route>
+            <Route path='/productsPage' element={<ProductsPage />}></Route>
+            <Route path='/contact' element={<Contact />}></Route>
+            <Route path='/login' element={<Login />}></Route>
+            <Route path='/homePage' element={<HomePage />}></Route>
+            <Route path='/product-details/:id' element={<ProductDetails />}></Route>
+            <Route path='/cart' element={<Cart />}></Route>
+            <Route path='/checkout-details' element={<Checkout />}></Route>
+            {/* ---- Auth Pages --- */}
+            <Route path='/signup' element={<SignUp />}></Route>
+            <Route path='/resetpassword' element={<ResetPassword />}></Route>
+            <Route path='/admin/*' element={
+            <AdminRoute>
+              <Admin />
+              </AdminRoute>}>
+              </Route>
+          </Routes>
+        </div>
+          <Footer />
+      </HashRouter>
+    </>
   );
 }
 
