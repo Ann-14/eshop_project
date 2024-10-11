@@ -5,7 +5,7 @@ import heroImg from "../assets/heroImg.jpg";
 import dogImg from "../assets/dogduck.jpg";
 import newbornImg from "../assets/newbornImg.jpg";
 import corporateImg from "../assets/corporateImg.jpg";
-import Typed from "react-typed";
+import { ReactTyped } from "react-typed";
 
 export const HomePage = () => {
   return (
@@ -25,7 +25,7 @@ export const HomePage = () => {
               {" "}
               BCN <span className="text-primary">Photo</span>studio
             </h2>
-            <Typed
+            <ReactTyped
               className="font-bold text-3xl uppercase"
               strings={["We trust words.", "We trust pictures."]}
               typeSpeed={50}
@@ -57,11 +57,11 @@ export const HomePage = () => {
               {" "}
               BCN <span className="text-primary">Photo</span>studio
             </h2>
-            <Typed
-              className="font-bold text-2xl uppercase"
+            <ReactTyped
+              className="font-bold text-3xl uppercase"
               strings={["We trust words.", "We trust pictures."]}
-              typeSpeed={60}
-              backSpeed={40}
+              typeSpeed={50}
+              backSpeed={50}
               backDelay={1}
               loop
               smartBackspace
