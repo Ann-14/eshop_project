@@ -165,6 +165,9 @@ export const HomePage = () => {
           </div>
         </div>
       </div>
+      <div className="mt-20">
+        <ElfsightWidget widgetID="b3fa5855-a303-4d1d-8b80-ec7549dbd130" />
+      </div>
       <Contact />
     </main>
   );
